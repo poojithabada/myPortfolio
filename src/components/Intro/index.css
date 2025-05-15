@@ -20,11 +20,10 @@
 
 }
 .name {
-  color: white;              
-  padding: 5px 10px;         
-  border-radius: 8px;         
+  color: white;                         
   font-weight: 600;         
-  font-size: 1.8em;              
+  font-size: 2rem;  
+  text-align: center;            
 }
 .hello{
    font-size:1.5rem;
