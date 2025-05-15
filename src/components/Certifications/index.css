@@ -1,0 +1,100 @@
+#works{
+    margin:0 auto;
+    min-height:calc(100vh-4rem);
+    width:100vw;
+    max-width:60rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding:0 1rem;
+}
+.worksTitle{
+    margin:1rem 0;
+    font-size:3rem;
+    color:#ff6f00;
+}
+.worksDesc{
+    font-weight: 300;
+    font-size: 1rem;
+    max-width:45rem;
+
+
+}
+.worksImgs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 65rem;
+  flex-wrap: wrap;
+}
+
+.certificateContainer {
+  position: relative;
+  margin: 0.5rem;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.worksImg {
+  object-fit: cover;
+  height: 12rem;
+  border-radius: 5px;
+  display: block;
+  
+}
+.worksImg:hover{
+    border: 3px solid #ac7118; 
+}
+.linkIcon {
+    position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;        
+  height: 40px;          
+  background-color: #ff6f00;
+  color: white;
+  font-size: 18px;
+  border-radius: 50%;    
+  text-align: center;
+  line-height: 40px;   
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.certificateContainer:hover .linkIcon {
+  opacity: 1;
+}
+
+.workBtn {
+    padding: 0.5rem 2.5rem;
+    background-color: #f97316; 
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    margin: 2rem 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.workBtn:hover {
+    background-color: #ea580c; 
+    transform: scale(1.05);
+}
+
+@media screen and (max-width:585px){
+    .worksImg{
+        height:48vw;
+    }
+}
+@media screen and (max-width:480px){
+   
+    #works{
+        margin-left:200px;
+    }
+}

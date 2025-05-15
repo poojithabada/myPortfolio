@@ -1,0 +1,135 @@
+#intro{
+    height:calc(100vh-4rem);
+    width:100vw;
+    max-width: 75rem;
+    margin:0 auto;
+    overflow: hidden;
+    display:flex;
+
+}
+
+.introContent{
+    height:100vh;
+    width:100vw;
+    padding:2rem;
+    font-size:3rem;
+    font-weight:700;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.hello{
+   font-size:1.5rem;
+   font-weight:100;
+
+}
+.introName{
+    color:#ff6f00;
+
+}
+.introPara{
+    font-size:medium;
+    font-weight:300;
+    letter-spacing: 1px;
+
+}
+.btn {
+    background: linear-gradient(135deg, #ff6f00, #ff8f00);
+    color: white;
+    margin: 1rem 0;
+    padding: 0.75rem 1.8rem;
+    border: none;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 111, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+  
+.btn:hover {
+    background: linear-gradient(135deg, #ff8f00, #ffa726);
+    transform: scale(1.06);
+    box-shadow: 0 6px 20px rgba(255, 111, 0, 0.4);
+}
+.btn::after {
+    content: " →";
+    opacity: 0;
+    position: absolute;
+    right: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn:hover::after {
+    opacity: 1;
+    right: 1.2rem;
+}
+
+.btnImg{
+    object-fit: cover;
+    margin:0 0.25rem;
+    height:1rem;
+}
+@media screen and (max-width:840px){
+    .introContent{
+        font-size: 10vw;
+    }
+    .hello{
+        font-size:4.5rem;
+    }
+}
+.profile{
+    border-radius: 1000px;
+    height:14rem;
+    width:14rem;
+    align-self: center;
+    margin-left:3rem;
+    margin-top:2rem;
+
+}
+.bio {
+  color: #bbb;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  text-align: center;
+}
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+.card {
+  background: #1a1a1a;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 0 8px rgba(255, 111, 0, 0.3);
+  transition: 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 16px rgba(255, 111, 0, 0.5);
+}
+
+.resumeBtn {
+  background: #ff6f00;
+  padding: 0.6rem 1.4rem;
+  color: white;
+  border-radius: 30px;
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.resumeBtn:hover {
+  background: #ffa726;
+  transform: scale(1.05);
+}
+

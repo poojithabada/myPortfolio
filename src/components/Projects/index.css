@@ -1,0 +1,88 @@
+:root {
+  --primary-orange: #ff6f00;
+  --badge-bg: #ffe0b2;
+}
+
+.projectsSection {
+  padding: 2rem;
+  background-color: transparent;
+  color: #333;
+  text-align: center;
+}
+
+.projectsTitle {
+  font-size: 2rem;
+  color: var(--primary-orange);
+  margin-bottom: 1rem;
+}
+
+.projectsIntro {
+  color:white;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.projectsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.projectCard {
+  background-color: white;
+  border: 1px solid #ffd9b3;
+  border-radius: 8px;
+  max-width: 300px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-orange);
+}
+
+.projectContent {
+  padding: 1rem;
+  text-align: left;
+}
+
+.projectContent h3 {
+  color: var(--primary-orange);
+  font-size: 1.2rem;
+}
+
+.projectContent p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.techStack {
+  margin-bottom: 1rem;
+}
+
+.techBadge {
+  display: inline-block;
+  background-color: var(--badge-bg);
+  color: var(--primary-orange);
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  margin: 0 0.3rem 0.3rem 0;
+}
+
+.projectLinks a {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  background-color: var(--primary-orange);
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.projectLinks a:hover {
+  background-color: #e65c00;
+}

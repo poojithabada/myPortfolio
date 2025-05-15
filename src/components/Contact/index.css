@@ -1,0 +1,143 @@
+#contactPage{
+    min-height:calc(100vh-4rem);
+    width:100vw;
+    max-width:60rem;
+    margin:0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.ContactPageTitle{
+    font-size:3rem;
+    margin-bottom:1rem;
+    color:#ff6f00;
+}
+.contactPageDesc{
+    font-weight: 300;
+    font-size: 1rem;
+
+}
+.experienceImgs{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:100vw;
+    max-width:65rem;
+    flex-wrap:wrap;
+
+}
+.experienceImgs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.experienceContainer {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0.5rem;
+}
+
+.experienceImg {
+  object-fit: cover;
+  height: 15rem;
+  border-radius: 5px;
+  display: block;
+}
+.experienceImg:hover{
+    border: 3px solid #ac7118;
+}
+
+.experienceLinkIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;        
+  height: 40px;          
+  background-color: #ff6f00;
+  color: white;
+  font-size: 18px;
+  border-radius: 50%;    
+  text-align: center;
+  line-height: 40px;   
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+
+.experienceContainer:hover .experienceLinkIcon {
+  opacity: 1;
+}
+
+.contactDesc{
+    padding:1rem;
+    font-size: medium;
+    font-weight: 300;  
+}
+.contactForm{
+    margin:1rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:90vw;
+    max-width: 60rem;
+}
+.name,.email,.msg{
+    font-size: medium;
+    width:100%;
+    max-width:40rem;
+    margin:0.5rem;
+    padding: 0.5rem 1rem;
+    color:white;
+    border:none;
+    border-radius:0.5rem;
+    background-color: rgb(40,40,40);
+}
+.submit {
+    background: #ff6600;
+    color: white;
+    padding: 0.75rem 3.5rem;
+    border: none;
+    margin: 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit:hover {
+    background: #e25500;
+    transform: scale(1.05);
+}
+@media screen and (max-width:480px){
+   
+    #contactPage{
+        margin-left:200px;
+    }
+}
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.social-icons a {
+  color: white;
+  background-color: #222;
+  border-radius: 50%;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff6600;
+  transform: scale(1.2);
+}

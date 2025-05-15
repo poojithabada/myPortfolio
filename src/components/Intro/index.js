@@ -1,0 +1,42 @@
+import React, { Component } from 'react';
+import './index.css';
+import profile from '../../assets/profile.jpeg';
+import btnImg from '../../assets/hireme.png'
+import resume from '../../assets/resume.pdf'
+
+
+import {Link} from 'react-scroll'
+
+class Intro extends Component {
+  render() {
+    return (
+      <section id="intro">
+        <div className="introContent">
+            <span className="hello">Hello,</span>
+            <span className="introText">I'm <span className="introName">Poojitha</span><br/>Website Designer</span>
+            <p className="introPara">I am a skilled web designer with experience in creating <br/>visually appealing and user friendly websites.</p>
+            <Link><button className="btn"  onClick={() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      }}><img src={btnImg} alt="Hire Me" className="btnImg"/>Hire me</button></Link>
+        </div>
+        <div>
+        <img src={profile} alt="profile" className="profile"/>
+        <div class="bio">
+    <p>🚀 Passionate about designing intuitive web experiences with clean, scalable code.</p>
+    <div class="services">
+  <div class="card">🌐 Web Design</div>
+  <div class="card">🎨 UI/UX</div>
+  <div class="card">⚙️ Frontend Dev</div>
+</div>
+<a href={resume} class="resumeBtn" download>📄 Download Resume</a>
+
+
+</div>
+
+        </div>
+      </section>
+    );
+  }
+}
+
+export default Intro;
