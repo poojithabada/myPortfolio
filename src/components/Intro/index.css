@@ -88,13 +88,12 @@
     height:14rem;
     width:14rem;
     align-self: center;
-    margin-left:2.8rem;
-    margin-top:2rem;
+    margin-left:1.8rem;
+    margin-top:3rem;
 
 }
 .bio {
   color: #bbb;
-  margin-top: 1.5rem;
   font-size: 1rem;
   text-align: center;
 }

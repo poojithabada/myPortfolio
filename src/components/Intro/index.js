@@ -19,7 +19,7 @@ class Intro extends Component {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
       }}><img src={btnImg} alt="Hire Me" className="btnImg"/>Hire me</button></Link>
         </div>
-        <div>
+        <div class="biopic">
         <img src={profile} alt="profile" className="profile"/>
         
         <div class="bio">
