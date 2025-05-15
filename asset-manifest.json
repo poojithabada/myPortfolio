@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/myPortfolio/static/css/main.f5a4148d.css",
+    "main.js": "/myPortfolio/static/js/main.8dd00fb1.js",
+    "static/media/DAWorkshop.png": "/myPortfolio/static/media/DAWorkshop.bbb31bae5f37dc90cea8.png",
+    "static/media/Teachingassistant.png": "/myPortfolio/static/media/Teachingassistant.d3f8b5d97528a5684663.png",
+    "static/media/genAI.png": "/myPortfolio/static/media/genAI.1b77b1d8ecde714d4a01.png",
+    "static/media/cyberSecurity.png": "/myPortfolio/static/media/cyberSecurity.faed6eb2c5ded41cf2f4.png",
+    "static/media/staticWebsite.png": "/myPortfolio/static/media/staticWebsite.0002cbb7bf532bc752c5.png",
+    "static/media/responsiveWebiste.png": "/myPortfolio/static/media/responsiveWebiste.739182f4bac87758f8e9.png",
+    "static/media/flexbox.png": "/myPortfolio/static/media/flexbox.2b1586062e0bfe8a1cd7.png",
+    "static/media/python.png": "/myPortfolio/static/media/python.6ded37ef2345490a1d07.png",
+    "static/media/dynamicWeb.png": "/myPortfolio/static/media/dynamicWeb.cde35cd3257963a7be73.png",
+    "static/media/developerFoundations.png": "/myPortfolio/static/media/developerFoundations.09bac201f568116ccd5d.png",
+    "static/media/NodeJs.png": "/myPortfolio/static/media/NodeJs.c4a24686a431c6c3fcd1.png",
+    "static/media/javascript.png": "/myPortfolio/static/media/javascript.cc7320fe0ecf55a2fa7d.png",
+    "static/media/databaseSQL.png": "/myPortfolio/static/media/databaseSQL.8b5c03ab1f4c7e4eced9.png",
+    "static/media/resume.pdf": "/myPortfolio/static/media/resume.a39b5ef0b06061c042df.pdf",
+    "static/media/profile.jpeg": "/myPortfolio/static/media/profile.f8d2c405adaa9cd0c734.jpeg",
+    "static/media/ui-design.png": "/myPortfolio/static/media/ui-design.c4acd455fc2040eddcc8.png",
+    "index.html": "/myPortfolio/index.html",
+    "main.f5a4148d.css.map": "/myPortfolio/static/css/main.f5a4148d.css.map",
+    "main.8dd00fb1.js.map": "/myPortfolio/static/js/main.8dd00fb1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f5a4148d.css",
+    "static/js/main.8dd00fb1.js"
+  ]
+}
