@@ -115,16 +115,11 @@
 }
 .card1 {
   background: transparent;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
   color: rgb(60, 58, 58);
   text-align: center;
-
   font-size:1.5rem;
-  box-shadow: 0 0 8px rgba(255, 111, 0, 0.3);
-  transition: 0.3s;
 }
-.card,.card1:hover {
+.card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 16px rgba(255, 111, 0, 0.5);
 }
