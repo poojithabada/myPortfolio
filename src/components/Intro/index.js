@@ -23,7 +23,7 @@ class Intro extends Component {
         <img src={profile} alt="profile" className="profile"/>
         
         <div class="bio">
-          <p class="name">Bada Poojitha</p>
+          <div class="card1">Bada Poojitha</div>
     <p>🚀 Passionate about designing intuitive web experiences with clean, scalable code.</p>
     <div class="services">
   <div class="card">🌐 Web Design</div>

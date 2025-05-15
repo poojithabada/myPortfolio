@@ -19,12 +19,7 @@
     justify-content: center;
 
 }
-.name {
-  color: white;                         
-  font-weight: 600;         
-  font-size: 2rem;  
-  text-align: center;            
-}
+
 .hello{
    font-size:1.5rem;
    font-weight:100;
@@ -93,7 +88,7 @@
     height:14rem;
     width:14rem;
     align-self: center;
-    margin-left:3rem;
+    margin-left:2.8rem;
     margin-top:2rem;
 
 }
@@ -118,7 +113,18 @@
   box-shadow: 0 0 8px rgba(255, 111, 0, 0.3);
   transition: 0.3s;
 }
-.card:hover {
+.card1 {
+  background: transparent;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  color: rgb(60, 58, 58);
+  text-align: center;
+
+  font-size:1.5rem;
+  box-shadow: 0 0 8px rgba(255, 111, 0, 0.3);
+  transition: 0.3s;
+}
+.card,.card1:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 16px rgba(255, 111, 0, 0.5);
 }
