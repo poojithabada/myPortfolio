@@ -19,6 +19,16 @@
     justify-content: center;
 
 }
+.name {
+  color: white;            
+  background-color: #444;      
+  padding: 5px 10px;         
+  border-radius: 8px;         
+  font-weight: 600;         
+  font-size: 1.2em;          
+  display: inline-block;       
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6); 
+}
 .hello{
    font-size:1.5rem;
    font-weight:100;
