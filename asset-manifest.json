@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/myPortfolio/static/css/main.f5a4148d.css",
-    "main.js": "/myPortfolio/static/js/main.d988cc29.js",
+    "main.js": "/myPortfolio/static/js/main.d9bb9663.js",
     "static/media/DAWorkshop.png": "/myPortfolio/static/media/DAWorkshop.bbb31bae5f37dc90cea8.png",
     "static/media/Teachingassistant.png": "/myPortfolio/static/media/Teachingassistant.d3f8b5d97528a5684663.png",
     "static/media/genAI.png": "/myPortfolio/static/media/genAI.1b77b1d8ecde714d4a01.png",
@@ -15,15 +15,15 @@
     "static/media/NodeJs.png": "/myPortfolio/static/media/NodeJs.c4a24686a431c6c3fcd1.png",
     "static/media/javascript.png": "/myPortfolio/static/media/javascript.cc7320fe0ecf55a2fa7d.png",
     "static/media/databaseSQL.png": "/myPortfolio/static/media/databaseSQL.8b5c03ab1f4c7e4eced9.png",
-    "static/media/resume.pdf": "/myPortfolio/static/media/resume.edae745041c1515039f1.pdf",
+    "static/media/resume.pdf": "/myPortfolio/static/media/resume.942b8d513389d24039dd.pdf",
     "static/media/profile.jpeg": "/myPortfolio/static/media/profile.f8d2c405adaa9cd0c734.jpeg",
     "static/media/ui-design.png": "/myPortfolio/static/media/ui-design.c4acd455fc2040eddcc8.png",
     "index.html": "/myPortfolio/index.html",
     "main.f5a4148d.css.map": "/myPortfolio/static/css/main.f5a4148d.css.map",
-    "main.d988cc29.js.map": "/myPortfolio/static/js/main.d988cc29.js.map"
+    "main.d9bb9663.js.map": "/myPortfolio/static/js/main.d9bb9663.js.map"
   },
   "entrypoints": [
     "static/css/main.f5a4148d.css",
-    "static/js/main.d988cc29.js"
+    "static/js/main.d9bb9663.js"
   ]
 }
