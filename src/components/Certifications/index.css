@@ -92,9 +92,3 @@
         height:48vw;
     }
 }
-@media screen and (max-width:480px){
-   
-    #works{
-        margin-left:200px;
-    }
-}

@@ -13,13 +13,11 @@
 .projectsTitle {
   font-size: 2rem;
   color: var(--primary-orange);
-  margin-bottom: 1rem;
 }
 
 .projectsIntro {
   color:white;
   font-size: 1rem;
-  margin-bottom: 2rem;
 }
 
 .projectsGrid {

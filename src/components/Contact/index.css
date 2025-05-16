@@ -117,12 +117,7 @@
     background: #e25500;
     transform: scale(1.05);
 }
-@media screen and (max-width:480px){
-   
-    #contactPage{
-        margin-left:200px;
-    }
-}
+
 .social-icons {
   display: flex;
   gap: 1.5rem;

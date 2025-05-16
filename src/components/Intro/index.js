@@ -19,18 +19,18 @@ class Intro extends Component {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
       }}><img src={btnImg} alt="Hire Me" className="btnImg"/>Hire me</button></Link>
         </div>
-        <div class="biopic">
+        <div className="biopic">
         <img src={profile} alt="profile" className="profile"/>
         
-        <div class="bio">
-          <div class="card1">Bada Poojitha</div>
+        <div className="bio">
+          <div className="card1">Bada Poojitha</div>
     <p>🚀 Passionate about designing intuitive web experiences with clean, scalable code.</p>
-    <div class="services">
-  <div class="card">🌐 Web Design</div>
-  <div class="card">🎨 UI/UX</div>
-  <div class="card">⚙️ Frontend Dev</div>
+    <div className="services">
+  <div className="card">🌐 Web Design</div>
+  <div className="card">🎨 UI/UX</div>
+  <div className="card">⚙️ Frontend Dev</div>
 </div>
-<a href={resume} class="resumeBtn" download>📄 Download Resume</a>
+<a href={resume} className="resumeBtn" download>📄 Download Resume</a>
 
 
 </div>
