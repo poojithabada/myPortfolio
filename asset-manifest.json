@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/myPortfolio/static/css/main.21697143.css",
-    "main.js": "/myPortfolio/static/js/main.edfd86c9.js",
+    "main.css": "/myPortfolio/static/css/main.f4182fd7.css",
+    "main.js": "/myPortfolio/static/js/main.75373f59.js",
     "static/media/DAWorkshop.png": "/myPortfolio/static/media/DAWorkshop.bbb31bae5f37dc90cea8.png",
     "static/media/Teachingassistant.png": "/myPortfolio/static/media/Teachingassistant.d3f8b5d97528a5684663.png",
     "static/media/genAI.png": "/myPortfolio/static/media/genAI.1b77b1d8ecde714d4a01.png",
@@ -19,11 +19,11 @@
     "static/media/profile.jpeg": "/myPortfolio/static/media/profile.f8d2c405adaa9cd0c734.jpeg",
     "static/media/ui-design.png": "/myPortfolio/static/media/ui-design.c4acd455fc2040eddcc8.png",
     "index.html": "/myPortfolio/index.html",
-    "main.21697143.css.map": "/myPortfolio/static/css/main.21697143.css.map",
-    "main.edfd86c9.js.map": "/myPortfolio/static/js/main.edfd86c9.js.map"
+    "main.f4182fd7.css.map": "/myPortfolio/static/css/main.f4182fd7.css.map",
+    "main.75373f59.js.map": "/myPortfolio/static/js/main.75373f59.js.map"
   },
   "entrypoints": [
-    "static/css/main.21697143.css",
-    "static/js/main.edfd86c9.js"
+    "static/css/main.f4182fd7.css",
+    "static/js/main.75373f59.js"
   ]
 }
