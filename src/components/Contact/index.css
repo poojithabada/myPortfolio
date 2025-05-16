@@ -49,14 +49,76 @@
   border-radius: 5px;
   display: block;
 }
-@media screen and (max-width:585px){
-    .experienceImg{
-        height:48vw;
-    }
-    #contactPage{
-     margin-left:1.8rem;
-    }
+
+@media screen and (max-width: 768px) {
+  #contactPage {
+    padding: 2rem 1rem;
+  }
+
+  .ContactPageTitle {
+    font-size: 2.2rem;
+  }
+
+  .contactPageDesc {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .experienceImgs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .experienceImg {
+    width: 18rem;
+    height: auto;
+  }
+
+  .contactForm {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .name,
+  .email,
+  .msg {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .submit {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .social-icons {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .social-icons a {
+    font-size: 1.5rem;
+    padding: 0.4rem;
+  }
 }
+
+@media screen and (max-width: 480px) {
+  .ContactPageTitle {
+    font-size: 1.8rem;
+  }
+
+  .submit {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .social-icons a {
+    font-size: 1.2rem;
+    padding: 0.3rem;
+  }
+}
+
 .experienceImg:hover{
     border: 3px solid #ac7118;
 }

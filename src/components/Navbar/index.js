@@ -33,8 +33,9 @@ const Navbar = () => {
         <div className="navMenu" style={{display:showMenu?'flex':'none'}}>
           <Link activeClass="active" to="intro" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Home</Link>
           <Link activeClass="active" to="skills" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>About</Link>
-          <Link activeClass="active" to="works" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Portfolio</Link>
-          <Link activeClass="active" to="contactPage" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Clients</Link>
+          <Link activeClass="active" to="projects" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Projects</Link>
+          <Link activeClass="active" to="works" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Certifications</Link>
+          <Link activeClass="active" to="contactPage" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Experience</Link>
           <Link activeClass="active" to="contactPage" spy={true} offset={-100} duration={500} className="listItem" onClick={() => setShowMenu(false)}>Contact</Link>
         </div>
     </nav>
