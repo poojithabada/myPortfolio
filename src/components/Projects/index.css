@@ -4,83 +4,135 @@
 }
 
 .projectsSection {
-  padding: 2rem;
-  background-color: transparent;
-  color: #333;
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .projectsTitle {
-  font-size: 2rem;
+  font-size: 3rem;
   color: var(--primary-orange);
+  margin-bottom: 0.5rem;
 }
 
 .projectsIntro {
-  color:white;
-  font-size: 1rem;
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
 }
 
 .projectsGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: center;
 }
 
 .projectCard {
-  background-color: white;
+  background: #ffffff;
   border: 1px solid #ffd9b3;
-  border-radius: 8px;
-  max-width: 300px;
-  transition: transform 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  width: 380px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
-
 .projectCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
   border-color: var(--primary-orange);
+  box-shadow: 0 10px 25px rgba(255, 111, 0, 0.2);
 }
 
 .projectContent {
-  padding: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   text-align: left;
 }
 
 .projectContent h3 {
   color: var(--primary-orange);
-  font-size: 1.2rem;
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
 }
 
 .projectContent p {
-  font-size: 0.95rem;
-  margin: 0.5rem 0 1rem;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
 }
 
 .techStack {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .techBadge {
   display: inline-block;
-  background-color: var(--badge-bg);
+  background: var(--badge-bg);
   color: var(--primary-orange);
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
-  font-size: 0.75rem;
-  margin: 0 0.3rem 0.3rem 0;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .projectLinks a {
-  display: inline-block;
-  margin-right: 10px;
-  padding: 0.4rem 0.7rem;
-  border-radius: 4px;
-  background-color: var(--primary-orange);
-  color: white;
   text-decoration: none;
-  font-size: 0.85rem;
+  background: var(--primary-orange);
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .projectLinks a:hover {
-  background-color: #e65c00;
+  background: #e65c00;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 1200px) {
+  .projectCard {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projectsSection {
+    padding: 3rem 1rem;
+  }
+
+  .projectsTitle {
+    font-size: 2.3rem;
+  }
+
+  .projectsGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projectCard {
+    width: 100%;
+    max-width: 450px;
+    min-height: auto;
+  }
+
+  .projectLinks {
+    flex-wrap: wrap;
+  }
 }

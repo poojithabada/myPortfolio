@@ -4,7 +4,7 @@ import "./index.css";
 const projectData = [
   {
   title: "AI-Web Studio",
-  description: "Build a full-stack application where users describe their requirements in plain English, and AI generates a complete working web application with live preview, source code generation, and deployment-ready structure.",
+description: "AI-powered web builder that transforms natural language prompts into complete web applications with live preview, code generation, and deployment-ready structure.",
   tech: [
   "React.js",
   "Vite",
