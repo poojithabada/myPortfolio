@@ -1,35 +1,54 @@
 import React, { Component } from 'react';
-import UIDesign from "../../assets/ui-design.png"
-import webDesign from "../../assets/website-design.png"
-import appDesign from "../../assets/app-design.png"
+import UIDesign from "../../assets/ui-design.png";
+import webDesign from "../../assets/website-design.png";
+import appDesign from "../../assets/app-design.png";
 
-import './index.css'
+import './index.css';
+
 class Skills extends Component {
   render() {
     return (
       <section id="skills">
-        <span className="skillTitle">What I do</span>
-        <span className="skillDesc">I am a skilled web designer with experience in creating visually appealing and user friendly websites.</span>
+        <span className="skillTitle">What I Do</span>
+        <span className="skillDesc">
+          I specialize in Full Stack Development, Artificial Intelligence, and
+          Data Structures & Algorithms, building scalable applications and
+          solving complex real-world problems.
+        </span>
+
         <div className="skillBars">
           <div className="skillBar">
-            <img src={UIDesign} alt="UiDesign" className="skillBarImg"/>
+            <img src={UIDesign} alt="DSA" className="skillBarImg" />
             <div className="skillBarText">
-              <h2>UI/UX design</h2>
-              <p>Crafting intuitive, aesthetic interfaces that enhance user satisfaction and drive engagement.</p>
+              <h2>Data Structures & Algorithms</h2>
+              <p>
+                Strong problem-solving skills with expertise in data structures,
+                algorithms, and optimized coding solutions for technical
+                challenges.
+              </p>
             </div>
           </div>
-           <div className="skillBar">
-            <img src={webDesign} alt="webDesign" className="skillBarImg"/>
+
+          <div className="skillBar">
+            <img src={webDesign} alt="Full Stack Development" className="skillBarImg" />
             <div className="skillBarText">
-              <h2>Website design</h2>
-              <p>Building responsive, fast, and visually stunning websites tailored to your brand identity.</p>
+              <h2>Full Stack Development</h2>
+              <p>
+                Building responsive and scalable web applications using React,
+                Node.js, Express, MongoDB, and modern development practices.
+              </p>
             </div>
           </div>
-           <div className="skillBar">
-            <img src={appDesign} alt="appDesign" className="skillBarImg"/>
+
+          <div className="skillBar">
+            <img src={appDesign} alt="AI Development" className="skillBarImg" />
             <div className="skillBarText">
-              <h2>app design</h2>
-              <p>Designing seamless mobile experiences with a focus on usability and innovation.</p>
+              <h2>AI Development</h2>
+              <p>
+                Developing AI-powered applications using Google Gemini, RAG,
+                intelligent agents, and automation to create innovative user
+                experiences.
+              </p>
             </div>
           </div>
         </div>
