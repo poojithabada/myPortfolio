@@ -47,7 +47,7 @@ const Intro = () => {
             download="Bada_Poojitha_Resume.pdf"
             className="resumeBtn"
           >
-            📄 Resume
+            📄Download Resume
           </a>
         </div>
       </div>
@@ -76,6 +76,7 @@ const Intro = () => {
             <div className="skillCard">🤖 AI Integration</div>
             <div className="skillCard">💻 REST APIs</div>
             <div className="skillCard">🐍 Python</div>
+            <div className="skillCard">SQL</div>
           </div>
         </div>
       </div>
