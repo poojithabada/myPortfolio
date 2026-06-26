@@ -1,3 +1,4 @@
+```jsx
 import React from "react";
 import "./index.css";
 
@@ -7,19 +8,22 @@ import resume from "../../assets/resume.pdf";
 
 const Intro = () => {
   const scrollToContact = () => {
-    const section = document.getElementById("contact");
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+    const contact = document.getElementById("contact");
+
+    if (contact) {
+      contact.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   };
 
   return (
     <section id="intro">
-      {/* Left Section */}
+      {/* LEFT SIDE */}
       <div className="introContent">
         <span className="hello">Hello, I'm</span>
 
-        <h1 className="introText">
+        <h1 className="introTitle">
           <span className="introName">Bada Poojitha</span>
         </h1>
 
@@ -28,10 +32,9 @@ const Intro = () => {
         </h2>
 
         <p className="introPara">
-          I build intelligent web applications by combining modern full-stack
-          development with Artificial Intelligence to create scalable,
-          user-focused digital experiences. Passionate about solving real-world
-          problems through clean code, modern UI, and AI-powered solutions.
+          I build intelligent web applications by combining modern Full Stack
+          Development with Artificial Intelligence to create scalable,
+          user-focused digital experiences that solve real-world problems.
         </p>
 
         <div className="buttonGroup">
@@ -41,39 +44,39 @@ const Intro = () => {
           </button>
 
           <a href={resume} download className="resumeBtn">
-            📄 Download Resume
+            Download Resume
           </a>
         </div>
       </div>
 
-      {/* Right Section */}
-      <div className="biopic">
+      {/* RIGHT SIDE */}
+      <div className="rightSection">
         <img
           src={profile}
           alt="Bada Poojitha"
           className="profile"
         />
 
-        <div className="bio">
-          <h3 className="card1">Bada Poojitha</h3>
+        <div className="bioCard">
+          <h3>Bada Poojitha</h3>
 
           <p>
-            🚀 Passionate about building AI-powered web applications that
-            combine modern design, intelligent automation, and scalable
-            full-stack architecture to solve real-world problems.
+            Passionate about building AI-powered applications with clean UI,
+            scalable architecture, and intelligent automation to solve
+            real-world problems.
           </p>
 
           <div className="services">
-            <div className="card">
-              🧩 Data Structures & Algorithms
+            <div className="skillCard">
+              🧩 DSA
             </div>
 
-            <div className="card">
-              💻 Full Stack Development
+            <div className="skillCard">
+              💻 Full Stack
             </div>
 
-            <div className="card">
-              🤖 AI Integration & Development
+            <div className="skillCard">
+              🤖 AI Development
             </div>
           </div>
         </div>
@@ -83,3 +86,4 @@ const Intro = () => {
 };
 
 export default Intro;
+```
