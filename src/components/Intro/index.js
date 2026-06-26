@@ -71,7 +71,7 @@ const Intro = () => {
 
           <div className="services">
             <div className="skillCard">💻 Full Stack Development</div>
-            <div className="skillCard">🧩 Data Structures & Problem Solving</div>
+            <div className="skillCard">🧩 Data Structures & Algorithms</div>
             <div className="skillCard">🤖 AI Integration & Machine Learning</div>
           </div>
         </div>
