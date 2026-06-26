@@ -70,13 +70,9 @@ const Intro = () => {
           </p>
 
           <div className="services">
-            <div className="skillCard">⚛ React.js</div>
-            <div className="skillCard">🟢 Node.js</div>
-            <div className="skillCard">🍃 MongoDB</div>
-            <div className="skillCard">🤖 AI Integration</div>
-            <div className="skillCard">💻 REST APIs</div>
-            <div className="skillCard">🐍 Python</div>
-            <div className="skillCard">SQL</div>
+            <div className="skillCard">💻 Full Stack Development</div>
+            <div className="skillCard">🧩 Data Structures & Problem Solving</div>
+            <div className="skillCard">🤖 AI Integration & Machine Learning</div>
           </div>
         </div>
       </div>
