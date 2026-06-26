@@ -1,22 +1,22 @@
-/* =========================
+/* ===========================
    HERO SECTION
-========================= */
+=========================== */
 
 #intro {
   max-width: 1200px;
+  min-height: calc(100vh - 70px);
   margin: 0 auto;
-  min-height: calc(100vh - 75px);
-  padding: 0.5rem 2rem 1.5rem;
+  padding: 2rem;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 4rem;
+  justify-content: space-between;
+  gap: 5rem;
 }
 
-/* =========================
-   LEFT SIDE
-========================= */
+/* ===========================
+   LEFT SECTION
+=========================== */
 
 .introContent {
   flex: 1;
@@ -24,105 +24,70 @@
 
 .hello {
   display: block;
-  color: #bdbdbd;
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: #9ca3af;
+  margin-bottom: .6rem;
 }
 
-.introTitle {
-  margin: 0;
-  font-size: 4.2rem;
-  line-height: 1.05;
+.introText {
+  display: block;
+  font-size: 4rem;
   font-weight: 700;
-  color: white;
+  line-height: 1.15;
+  color: #fff;
 }
 
 .introName {
   color: #ff7a00;
 }
 
-.role {
-  margin-top: 0.6rem;
-  margin-bottom: 0;
-  font-size: 2rem;
-  font-weight: 600;
-  color: white;
-}
-
 .introPara {
-  margin-top: 1.2rem;
   max-width: 560px;
-  color: #bdbdbd;
-  font-size: 1.08rem;
+  margin: 1.5rem 0 2rem;
+  color: #c5c5c5;
   line-height: 1.8;
+  font-size: 1.05rem;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-
-.buttonGroup {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
+/* ===========================
+   BUTTON
+=========================== */
 
 .btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: .7rem;
 
-  padding: 0.95rem 2rem;
+  padding: .9rem 2rem;
 
   border: none;
-  border-radius: 50px;
+  border-radius: 40px;
 
-  background: linear-gradient(135deg, #ff6f00, #ff9800);
+  background: linear-gradient(135deg,#ff7a00,#ff9800);
 
-  color: white;
+  color: #fff;
+  font-size: 1rem;
   font-weight: 600;
 
   cursor: pointer;
 
-  transition: .3s;
+  transition: .3s ease;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(255,111,0,.35);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(255,122,0,.35);
 }
 
 .btnImg {
-  width: 18px;
+  width: 20px;
 }
 
-.resumeBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* ===========================
+   RIGHT SECTION
+=========================== */
 
-  padding: 0.95rem 2rem;
-
-  border-radius: 50px;
-
-  border: 2px solid #ff7a00;
-
-  text-decoration: none;
-  color: white;
-
-  transition: .3s;
-}
-
-.resumeBtn:hover {
-  background: #ff7a00;
-}
-
-/* =========================
-   RIGHT SIDE
-========================= */
-
-.rightSection {
+.biopic {
   flex: 1;
 
   display: flex;
@@ -131,73 +96,68 @@
 }
 
 .profile {
-  width: 220px;
-  height: 220px;
+  width: 230px;
+  height: 230px;
 
   object-fit: cover;
+
   border-radius: 50%;
+  border: 5px solid #ff7a00;
 
-  border: 4px solid #ff7a00;
-
-  box-shadow: 0 0 30px rgba(255,111,0,.35);
+  box-shadow: 0 0 30px rgba(255,122,0,.35);
 }
 
-/* =========================
+/* ===========================
    BIO CARD
-========================= */
+=========================== */
 
-.bioCard {
+.bio {
   width: 100%;
-  max-width: 450px;
+  max-width: 430px;
 
-  margin-top: 1.2rem;
+  margin-top: 1.7rem;
 
-  padding: 1.5rem;
+  padding: 2rem;
 
-  border-radius: 20px;
-
-  background: rgba(255,255,255,.04);
-
-  border: 1px solid rgba(255,255,255,.08);
-
+  background: rgba(255,255,255,.05);
   backdrop-filter: blur(12px);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.08);
 
   text-align: center;
 }
 
-.bioCard h2 {
-  margin: 0;
+.card1 {
+  font-size: 1.9rem;
+  font-weight: 700;
   color: white;
-  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.bioCard p {
-  margin-top: 1rem;
-  color: #bdbdbd;
+.bio p {
+  color: #c8c8c8;
   line-height: 1.7;
+  margin-bottom: 1.8rem;
 }
 
-/* =========================
-   SKILLS
-========================= */
+/* ===========================
+   SERVICES
+=========================== */
 
 .services {
-  margin-top: 1.4rem;
-
   display: flex;
   flex-direction: column;
-
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
 .card {
-  padding: 0.95rem 1rem;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
 
   border-radius: 14px;
 
-  background: rgba(255,255,255,.04);
-
-  border: 1px solid rgba(255,255,255,.08);
+  padding: 1rem;
 
   color: white;
 
@@ -205,16 +165,42 @@
 }
 
 .card:hover {
-  transform: translateY(-4px);
-
+  transform: translateY(-5px);
   border-color: #ff7a00;
-
-  box-shadow: 0 10px 25px rgba(255,111,0,.2);
+  box-shadow: 0 12px 30px rgba(255,122,0,.2);
 }
 
-/* =========================
+/* ===========================
+   RESUME BUTTON
+=========================== */
+
+.resumeBtn {
+  display: inline-block;
+
+  margin-top: 1.8rem;
+
+  padding: .95rem 2rem;
+
+  background: transparent;
+
+  border: 2px solid #ff7a00;
+  border-radius: 40px;
+
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition: .3s;
+}
+
+.resumeBtn:hover {
+  background: #ff7a00;
+  color: white;
+}
+
+/* ===========================
    TABLET
-========================= */
+=========================== */
 
 @media (max-width:992px){
 
@@ -222,12 +208,8 @@
 gap:3rem;
 }
 
-.introTitle{
-font-size:3.3rem;
-}
-
-.role{
-font-size:1.7rem;
+.introText{
+font-size:3.2rem;
 }
 
 .profile{
@@ -235,74 +217,54 @@ width:200px;
 height:200px;
 }
 
+.bio{
+padding:1.7rem;
 }
 
-/* =========================
+}
+
+/* ===========================
    MOBILE
-========================= */
+=========================== */
 
 @media (max-width:768px){
 
 #intro{
-
 flex-direction:column-reverse;
-
 text-align:center;
-
-padding:1rem;
-
 gap:2rem;
-
-min-height:auto;
-
+padding:1.5rem;
 }
 
 .introContent{
-
 display:flex;
-
 flex-direction:column;
-
 align-items:center;
-
 }
 
-.introTitle{
-
-font-size:2.6rem;
-
-}
-
-.role{
-
-font-size:1.4rem;
-
+.introText{
+font-size:2.5rem;
 }
 
 .introPara{
-
 max-width:100%;
-
 }
 
 .profile{
-
-width:170px;
-
-height:170px;
-
+width:180px;
+height:180px;
 }
 
-.buttonGroup{
-
-justify-content:center;
-
+.bio{
+padding:1.5rem;
 }
 
-.bioCard{
+.services{
+width:100%;
+}
 
-padding:1.3rem;
-
+.card{
+font-size:.95rem;
 }
 
 }
