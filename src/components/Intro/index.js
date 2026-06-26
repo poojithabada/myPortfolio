@@ -1,4 +1,3 @@
-```jsx
 import React from "react";
 import "./index.css";
 
@@ -19,7 +18,7 @@ const Intro = () => {
 
   return (
     <section id="intro">
-      {/* LEFT SIDE */}
+      {/* Left Section */}
       <div className="introContent">
         <span className="hello">Hello, I'm</span>
 
@@ -32,9 +31,9 @@ const Intro = () => {
         </h2>
 
         <p className="introPara">
-          I build intelligent web applications by combining modern Full Stack
-          Development with Artificial Intelligence to create scalable,
-          user-focused digital experiences that solve real-world problems.
+          Passionate about building AI-powered web applications using modern
+          Full Stack technologies. I create scalable, intelligent, and
+          user-focused digital solutions that solve real-world problems.
         </p>
 
         <div className="buttonGroup">
@@ -43,13 +42,17 @@ const Intro = () => {
             Hire Me
           </button>
 
-          <a href={resume} download className="resumeBtn">
-            Download Resume
+          <a
+            href={resume}
+            download="Bada_Poojitha_Resume.pdf"
+            className="resumeBtn"
+          >
+            📄 Resume
           </a>
         </div>
       </div>
 
-      {/* RIGHT SIDE */}
+      {/* Right Section */}
       <div className="rightSection">
         <img
           src={profile}
@@ -61,23 +64,18 @@ const Intro = () => {
           <h3>Bada Poojitha</h3>
 
           <p>
-            Passionate about building AI-powered applications with clean UI,
-            scalable architecture, and intelligent automation to solve
-            real-world problems.
+            AI enthusiast and Full Stack Developer focused on creating clean,
+            responsive, and intelligent web applications with modern
+            technologies.
           </p>
 
           <div className="services">
-            <div className="skillCard">
-              🧩 DSA
-            </div>
-
-            <div className="skillCard">
-              💻 Full Stack
-            </div>
-
-            <div className="skillCard">
-              🤖 AI Development
-            </div>
+            <div className="skillCard">⚛ React.js</div>
+            <div className="skillCard">🟢 Node.js</div>
+            <div className="skillCard">🍃 MongoDB</div>
+            <div className="skillCard">🤖 AI Integration</div>
+            <div className="skillCard">💻 REST APIs</div>
+            <div className="skillCard">🐍 Python</div>
           </div>
         </div>
       </div>
@@ -86,4 +84,3 @@ const Intro = () => {
 };
 
 export default Intro;
-```
