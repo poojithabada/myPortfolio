@@ -3,7 +3,7 @@ import "./index.css";
 
 const Projects = () => {
   // Read the secret key securely from the environment variables
-  const SECRET_KEY = import.meta.env.VITE_SECRET_KEY || process.env.REACT_APP_SECRET_KEY;
+  const SECRET_KEY =  process.env.REACT_APP_SECRET_KEY;
 
   // Initial state with your existing projects organized by category
   const [categorizedProjects, setCategorizedProjects] = useState([
