@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import "./index.css";
 
 const Projects = () => {
-  // FIXED: Handles both Vite (import.meta.env) and CRA (process.env) 
-  // Fallback set to "admin123" so you don't get locked out while testing.
-  const SECRET_KEY = 
-    (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_SECRET_KEY) ||
-    (typeof process !== "undefined" && process.env && process.env.REACT_APP_SECRET_KEY) ||
-    "admin123";
+  // Define your key directly here so it works flawlessly on GitHub Pages.
+  // Change "admin123" to your preferred password.
+  const SECRET_KEY = (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_SECRET_KEY) ||
+    (typeof process !== "undefined" && process.env && process.env.REACT_APP_SECRET_KEY);
 
   // All 3 projects initialized under Full Stack, other categories left empty
   const [categorizedProjects, setCategorizedProjects] = useState([
@@ -180,6 +178,21 @@ const Projects = () => {
                     <div className="projectContent">
                       <div className="cardHeaderRow">
                         <h4>{project.title}</h4>
+                      </div>
+                      <p>{project.description}</p>
+                      <div className="techStack">
+                        {project.tech.map((t, i) => (
+                          <span key={i} className="techBadge">{t}</span>
+                        ))}
+                      </div>
+                      
+                      {/* Controls relocated to bottom row */}
+                      <div className="projectLinksRow">
+                        <div className="projectLinks">
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                        
                         <div className="cardActionTray">
                           <button 
                             className="cardActionBtn" 
@@ -195,16 +208,7 @@ const Projects = () => {
                           </button>
                         </div>
                       </div>
-                      <p>{project.description}</p>
-                      <div className="techStack">
-                        {project.tech.map((t, i) => (
-                          <span key={i} className="techBadge">{t}</span>
-                        ))}
-                      </div>
-                      <div className="projectLinks">
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo</a>
-                      </div>
+
                     </div>
                   </div>
                 ))}
@@ -224,8 +228,7 @@ const Projects = () => {
               <form onSubmit={handleVerifyKey} className="modalForm">
                 <h3>Admin Verification Required</h3>
                 <p>
-                  Enter your secret key to <strong>{modalAction}</strong> this project item. 
-                  <br/><small style={{color: "#888"}}>(Hint: Try "admin123" if .env is failing)</small>
+                  Enter your secret key to <strong>{modalAction}</strong> this project item.
                 </p>
                 <input 
                   type="password" 
