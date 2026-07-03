@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import "./index.css";
 
 const Projects = () => {
-  // Safe runtime check to prevent "process is not defined" crashes
+  // Read the secret key securely from the environment variables
   const SECRET_KEY = typeof process !== "undefined" && process.env 
     ? process.env.REACT_APP_SECRET_KEY 
     : "";
 
-  // Initial state with your existing projects organized by category
+  // All 3 projects initialized under Full Stack, other categories left empty
   const [categorizedProjects, setCategorizedProjects] = useState([
     {
       category: "LLMs & Gen AI",
+      projects: [],
+    },
+    {
+      category: "Full Stack Projects",
       projects: [
         {
           title: "Building EduReach — Agentic College Chatbot",
@@ -19,11 +23,6 @@ const Projects = () => {
           github: "https://github.com/poojithabada/edureach-platform",
           demo: "https://edureach-platform-lake.vercel.app",
         },
-      ],
-    },
-    {
-      category: "Full Stack Projects",
-      projects: [
         {
           title: "AI-Web Studio",
           description: "AI-powered web builder that transforms natural language prompts into complete web applications with live preview, code generation, and deployment-ready structure.",
@@ -31,11 +30,6 @@ const Projects = () => {
           github: "https://github.com/poojithabada/AI-Powered-web-Builder.git",
           demo: "https://ai-powered-web-builder-wcmf.vercel.app"
         },
-      ],
-    },
-    {
-      category: "Front End Projects",
-      projects: [
         {
           title: "AI-Powered Resume Builder",
           description: "Build a full-stack AI-powered resume builder.",
@@ -44,23 +38,43 @@ const Projects = () => {
           demo: "https://ai-powered-resume-builder-eight.vercel.app",
         },
       ],
+    },
+    {
+      category: "Front End Projects",
+      projects: [],
     }
   ]);
 
-  // Modal control states
+  // Modal UI control states
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalAction, setModalAction] = useState(""); 
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null);
   const [activeProjectIndex, setActiveProjectIndex] = useState(null); 
   
-  // Security and Form states
+  // Security and Input states
   const [enteredKey, setEnteredKey] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
-  const [newProject, setNewProject] = useState({ title: "", description: "", tech: "", github: "", demo: "" });
+  const [projectForm, setProjectForm] = useState({ title: "", description: "", tech: "", github: "", demo: "" });
 
   const handleOpenAddModal = (categoryIndex) => {
     setModalAction("add");
     setActiveCategoryIndex(categoryIndex);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEditModal = (categoryIndex, projectIndex) => {
+    setModalAction("edit");
+    setActiveCategoryIndex(categoryIndex);
+    setActiveProjectIndex(projectIndex);
+    
+    const targetProject = categorizedProjects[categoryIndex].projects[projectIndex];
+    setProjectForm({
+      title: targetProject.title,
+      description: targetProject.description,
+      tech: targetProject.tech.join(", "), 
+      github: targetProject.github,
+      demo: targetProject.demo
+    });
     setIsModalOpen(true);
   };
 
@@ -77,7 +91,7 @@ const Projects = () => {
       if (modalAction === "delete") {
         executeDelete();
       } else {
-        setIsAuthorized(true);
+        setIsAuthorized(true); 
       }
     } else {
       alert("Invalid Secret Key! Access Denied.");
@@ -95,26 +109,31 @@ const Projects = () => {
       }
       return group;
     });
-
     setCategorizedProjects(updatedCategories);
     closeAndResetModal();
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const techArray = newProject.tech.split(",").map(item => item.trim()).filter(Boolean);
+    const techArray = projectForm.tech.split(",").map(item => item.trim()).filter(Boolean);
 
-    const createdProject = {
-      title: newProject.title,
-      description: newProject.description,
+    const formattedProjectData = {
+      title: projectForm.title,
+      description: projectForm.description,
       tech: techArray,
-      github: newProject.github || "#",
-      demo: newProject.demo || "#"
+      github: projectForm.github || "#",
+      demo: projectForm.demo || "#"
     };
 
-    const updatedCategories = categorizedProjects.map((group, index) => {
-      if (index === activeCategoryIndex) {
-        return { ...group, projects: [...group.projects, createdProject] };
+    const updatedCategories = categorizedProjects.map((group, cIndex) => {
+      if (cIndex === activeCategoryIndex) {
+        if (modalAction === "edit") {
+          const targetProjectsCopy = [...group.projects];
+          targetProjectsCopy[activeProjectIndex] = formattedProjectData;
+          return { ...group, projects: targetProjectsCopy };
+        } else {
+          return { ...group, projects: [...group.projects, formattedProjectData] };
+        }
       }
       return group;
     });
@@ -130,7 +149,7 @@ const Projects = () => {
     setEnteredKey("");
     setActiveCategoryIndex(null);
     setActiveProjectIndex(null);
-    setNewProject({ title: "", description: "", tech: "", github: "", demo: "" });
+    setProjectForm({ title: "", description: "", tech: "", github: "", demo: "" });
   };
 
   return (
@@ -150,50 +169,62 @@ const Projects = () => {
               </button>
             </div>
             
-            <div className="projectsGrid">
-              {group.projects.map((project, index) => (
-                <div className="projectCard" key={index}>
-                  <div className="projectContent">
-                    <div className="cardHeaderRow">
-  <h4>{project.title}</h4>
-  <button 
-    className="deleteProjectBtn" 
-    onClick={() => handleOpenDeleteModal(groupIndex, index)}
-    title="Delete Project"
-  >
-    <span className="deleteIcon">&times;</span> Delete
-  </button>
-</div>
-                    <p>{project.description}</p>
-                    <div className="techStack">
-                      {project.tech.map((t, i) => (
-                        <span key={i} className="techBadge">{t}</span>
-                      ))}
-                    </div>
-                    <div className="projectLinks">
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo</a>
+            {group.projects.length === 0 ? (
+              <p className="emptyCategoryText">No projects in this category yet.</p>
+            ) : (
+              <div className="projectsGrid">
+                {group.projects.map((project, index) => (
+                  <div className="projectCard" key={index}>
+                    <div className="projectContent">
+                      <div className="cardHeaderRow">
+                        <h4>{project.title}</h4>
+                        <div className="cardActionTray">
+                          <button 
+                            className="cardActionBtn editBtn" 
+                            onClick={() => handleOpenEditModal(groupIndex, index)}
+                            title="Edit Project"
+                          >
+                            ✏️ Edit
+                          </button>
+                          <button 
+                            className="cardActionBtn deleteBtn" 
+                            onClick={() => handleOpenDeleteModal(groupIndex, index)}
+                            title="Delete Project"
+                          >
+                            🗑️ Delete
+                          </button>
+                        </div>
+                      </div>
+                      <p>{project.description}</p>
+                      <div className="techStack">
+                        {project.tech.map((t, i) => (
+                          <span key={i} className="techBadge">{t}</span>
+                        ))}
+                      </div>
+                      <div className="projectLinks">
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      {/* MULTI-PURPOSE ACCESS CONTROL MODAL */}
+      {/* ACCESS CONTROL MODAL SYSTEM */}
       {isModalOpen && (
         <div className="modalOverlay">
           <div className="modalContent">
             <button className="modalCloseBtn" onClick={closeAndResetModal}>&times;</button>
             
-            {!isAuthorized && (modalAction === "delete" || modalAction === "add") ? (
+            {!isAuthorized && (modalAction === "delete" || modalAction === "add" || modalAction === "edit") ? (
               <form onSubmit={handleVerifyKey} className="modalForm">
                 <h3>Admin Verification Required</h3>
                 <p>
-                  Enter your secret key to {modalAction} project 
-                  {modalAction === "delete" && " permanently"}.
+                  Enter your secret key to <strong>{modalAction}</strong> this project item.
                 </p>
                 <input 
                   type="password" 
@@ -209,21 +240,23 @@ const Projects = () => {
               </form>
             ) : (
               <form onSubmit={handleFormSubmit} className="modalForm">
-                <h3>Add Project to {categorizedProjects[activeCategoryIndex]?.category}</h3>
+                <h3>
+                  {modalAction === "edit" ? "Modify Project Info" : `Add Project to ${categorizedProjects[activeCategoryIndex]?.category}`}
+                </h3>
                 
                 <label>Project Title</label>
                 <input 
                   type="text" 
-                  value={newProject.title} 
-                  onChange={(e) => setNewProject({...newProject, title: e.target.value})} 
+                  value={projectForm.title} 
+                  onChange={(e) => setProjectForm({...projectForm, title: e.target.value})} 
                   required 
                   className="modalInput"
                 />
 
                 <label>Description</label>
                 <textarea 
-                  value={newProject.description} 
-                  onChange={(e) => setNewProject({...newProject, description: e.target.value})} 
+                  value={projectForm.description} 
+                  onChange={(e) => setProjectForm({...projectForm, description: e.target.value})} 
                   required 
                   className="modalInput text-area"
                 />
@@ -232,8 +265,8 @@ const Projects = () => {
                 <input 
                   type="text" 
                   placeholder="React, Express, MongoDB"
-                  value={newProject.tech} 
-                  onChange={(e) => setNewProject({...newProject, tech: e.target.value})} 
+                  value={projectForm.tech} 
+                  onChange={(e) => setProjectForm({...projectForm, tech: e.target.value})} 
                   required 
                   className="modalInput"
                 />
@@ -241,20 +274,22 @@ const Projects = () => {
                 <label>GitHub Repository URL</label>
                 <input 
                   type="url" 
-                  value={newProject.github} 
-                  onChange={(e) => setNewProject({...newProject, github: e.target.value})} 
+                  value={projectForm.github} 
+                  onChange={(e) => setProjectForm({...projectForm, github: e.target.value})} 
                   className="modalInput"
                 />
 
                 <label>Live Demo URL</label>
                 <input 
                   type="url" 
-                  value={newProject.demo} 
-                  onChange={(e) => setNewProject({...newProject, demo: e.target.value})} 
+                  value={projectForm.demo} 
+                  onChange={(e) => setProjectForm({...projectForm, demo: e.target.value})} 
                   className="modalInput"
                 />
 
-                <button type="submit" className="modalSubmitBtn">Publish Project</button>
+                <button type="submit" className="modalSubmitBtn">
+                  {modalAction === "edit" ? "Save Alterations" : "Publish Project"}
+                </button>
               </form>
             )}
           </div>
