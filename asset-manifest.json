@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/myPortfolio/static/css/main.1ae56581.css",
-    "main.js": "/myPortfolio/static/js/main.9d5ae334.js",
+    "main.css": "/myPortfolio/static/css/main.2444d686.css",
+    "main.js": "/myPortfolio/static/js/main.466681b0.js",
     "static/media/DAWorkshop.png": "/myPortfolio/static/media/DAWorkshop.bbb31bae5f37dc90cea8.png",
     "static/media/Teachingassistant.png": "/myPortfolio/static/media/Teachingassistant.d3f8b5d97528a5684663.png",
     "static/media/genAI.png": "/myPortfolio/static/media/genAI.1b77b1d8ecde714d4a01.png",
@@ -19,11 +19,11 @@
     "static/media/ui-design.png": "/myPortfolio/static/media/ui-design.c4acd455fc2040eddcc8.png",
     "static/media/resume.pdf": "/myPortfolio/static/media/resume.08be090e0a5b6195c4a4.pdf",
     "index.html": "/myPortfolio/index.html",
-    "main.1ae56581.css.map": "/myPortfolio/static/css/main.1ae56581.css.map",
-    "main.9d5ae334.js.map": "/myPortfolio/static/js/main.9d5ae334.js.map"
+    "main.2444d686.css.map": "/myPortfolio/static/css/main.2444d686.css.map",
+    "main.466681b0.js.map": "/myPortfolio/static/js/main.466681b0.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ae56581.css",
-    "static/js/main.9d5ae334.js"
+    "static/css/main.2444d686.css",
+    "static/js/main.466681b0.js"
   ]
 }
