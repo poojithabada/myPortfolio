@@ -111,22 +111,57 @@
   height: 100%;
 }
 
+/* --- Clean Header & Neat Action Buttons --- */
 .cardHeaderRow {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
   margin-bottom: 0.8rem;
+  gap: 1rem;
 }
 
 .projectContent h4 {
   color: var(--primary-orange);
   font-size: 1.6rem;
   margin: 0;
-  line-height: 1.3;
-  flex: 1;
+  line-height: 1.2;
+  flex-grow: 1; /* Pushes the buttons all the way to the right */
 }
 
+.cardActionTray {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0; /* Hidden until hover for a clean look */
+  transition: opacity 0.2s ease;
+  margin-top: 0.2rem;
+}
+
+/* Show buttons when mouse enters the card */
+.projectCard:hover .cardActionTray {
+  opacity: 1;
+}
+
+.cardActionBtn {
+  background: transparent;
+  color: #a0a0a0; /* Soft gray initially */
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: transparent; /* Invisible underline initially */
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+/* Vibrant orange with underline on hover */
+.cardActionBtn:hover {
+  color: var(--primary-orange);
+  text-decoration-color: var(--primary-orange);
+}
+
+/* --- Description & Badges --- */
 .projectContent p {
   color: #333333;
   font-size: 1rem;
@@ -134,43 +169,6 @@
   margin-bottom: 1rem;
 }
 
-/* --- Text-Only Action Tray --- */
-.cardActionTray {
-  display: flex;
-  gap: 0.35rem;
-  opacity: 0; /* Hidden initially to maintain layout neatness */
-  transition: opacity 0.2s ease-in-out;
-  margin-top: 0.2rem;
-}
-
-/* Reveal Edit/Delete triggers seamlessly on card focus */
-.projectCard:hover .cardActionTray {
-  opacity: 1;
-}
-
-.cardActionBtn {
-  background: transparent;
-  color: #777777;
-  border: 1px solid #e0e0e0;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-}
-
-/* Unified Orange highlighting on user interactives */
-.cardActionBtn:hover {
-  background: var(--badge-bg) !important;
-  color: var(--primary-orange) !important;
-  border-color: var(--primary-orange) !important;
-}
-
-/* --- Badges & Links --- */
 .techStack {
   display: flex;
   flex-wrap: wrap;
@@ -189,6 +187,7 @@
   font-weight: 500;
 }
 
+/* --- Project Links --- */
 .projectLinks {
   display: flex;
   gap: 0.8rem;
@@ -346,6 +345,7 @@
 
   .cardActionTray {
     opacity: 1; /* Keeps buttons visible directly on touchscreen devices */
+    margin-top: 0.5rem;
   }
 
   .projectsGrid {
