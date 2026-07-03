@@ -1,6 +1,8 @@
 :root {
   --primary-orange: #ff6f00;
   --badge-bg: #ffe0b2;
+  --danger-red: #d32f2f;
+  --danger-bg: #ffebee;
 }
 
 .projectsSection {
@@ -83,6 +85,7 @@
   border: 1px solid #ffd9b3;
   border-radius: 16px;
   width: 380px;
+  position: relative; /* Keeps button rendering context clean */
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
@@ -116,20 +119,41 @@
   flex: 1;
 }
 
+/* Modernized Sleek Delete Button */
 .deleteProjectBtn {
   background: transparent;
-  border: none;
-  font-size: 1.2rem;
+  color: #999;
+  border: 1px solid #ddd;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  padding: 0.2rem;
-  border-radius: 50%;
-  transition: transform 0.2s, background 0.2s;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  opacity: 0.4; /* Softly hidden away when not looking directly at card */
+  transition: all 0.2s ease;
+}
+
+.deleteIcon {
+  font-size: 1.1rem;
   line-height: 1;
+  font-weight: 300;
+}
+
+/* Smooth high-visibility contrast change on card focusing states */
+.projectCard:hover .deleteProjectBtn {
+  opacity: 1;
+  color: #777;
 }
 
 .deleteProjectBtn:hover {
-  transform: scale(1.15);
-  background: #ffe5e5;
+  background: var(--danger-bg) !important;
+  color: var(--danger-red) !important;
+  border-color: #ffcdd2 !important;
 }
 
 .projectContent p {
@@ -180,7 +204,7 @@
   transform: translateY(-2px);
 }
 
-/* --- Modal & Access Form Styles --- */
+/* --- Modal Layout UI --- */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -315,5 +339,9 @@
     width: 100%;
     max-width: 450px;
     min-height: auto;
+  }
+  
+  .deleteProjectBtn {
+    opacity: 1; /* Keep visible permanently on touchscreens */
   }
 }

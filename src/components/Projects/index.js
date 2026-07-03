@@ -155,15 +155,15 @@ const Projects = () => {
                 <div className="projectCard" key={index}>
                   <div className="projectContent">
                     <div className="cardHeaderRow">
-                      <h4>{project.title}</h4>
-                      <button 
-                        className="deleteProjectBtn" 
-                        onClick={() => handleOpenDeleteModal(groupIndex, index)}
-                        title="Delete Project"
-                      >
-                        🗑️
-                      </button>
-                    </div>
+  <h4>{project.title}</h4>
+  <button 
+    className="deleteProjectBtn" 
+    onClick={() => handleOpenDeleteModal(groupIndex, index)}
+    title="Delete Project"
+  >
+    <span className="deleteIcon">&times;</span> Delete
+  </button>
+</div>
                     <p>{project.description}</p>
                     <div className="techStack">
                       {project.tech.map((t, i) => (
