@@ -53,7 +53,7 @@
   margin: 0;
 }
 
-/* Add Project Trigger Button */
+/* Action Control Buttons */
 .addProjectBtn {
   background: transparent;
   color: var(--primary-orange);
@@ -100,11 +100,36 @@
   height: 100%;
 }
 
+.cardHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
 .projectContent h4 {
   color: var(--primary-orange);
   font-size: 1.6rem;
-  margin-bottom: 0.8rem;
+  margin: 0;
   line-height: 1.3;
+  flex: 1;
+}
+
+.deleteProjectBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 50%;
+  transition: transform 0.2s, background 0.2s;
+  line-height: 1;
+}
+
+.deleteProjectBtn:hover {
+  transform: scale(1.15);
+  background: #ffe5e5;
 }
 
 .projectContent p {
@@ -201,6 +226,12 @@
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.5rem;
+}
+
+.modalForm p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
 }
 
 .modalForm label {

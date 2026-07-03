@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./index.css";
 
 const Projects = () => {
-  // 1. Define your secret key here
-  const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
+  // Read the secret key securely from the environment variables
+  const SECRET_KEY = import.meta.env.VITE_SECRET_KEY || process.env.REACT_APP_SECRET_KEY;
 
-  // 2. Initial state with your existing projects organized by category
+  // Initial state with your existing projects organized by category
   const [categorizedProjects, setCategorizedProjects] = useState([
     {
       category: "Full Stack Projects",
@@ -45,43 +45,68 @@ const Projects = () => {
     }
   ]);
 
-  // States to control form and authorization modal
+  // Modal control states
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalAction, setModalAction] = useState(""); // Tracks whether we are "add" or "delete"
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(null); // Tracks which project to delete
+  
+  // Security and Form states
   const [enteredKey, setEnteredKey] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const [newProject, setNewProject] = useState({ title: "", description: "", tech: "", github: "", demo: "" });
 
-  // Form input states
-  const [newProject, setNewProject] = useState({
-    title: "",
-    description: "",
-    tech: "",
-    github: "",
-    demo: ""
-  });
-
-  // Step 1: Open verification when user clicks "Add Project"
+  // Open verification modal for adding a project
   const handleOpenAddModal = (categoryIndex) => {
+    setModalAction("add");
     setActiveCategoryIndex(categoryIndex);
     setIsModalOpen(true);
   };
 
-  // Step 2: Validate the secret key
+  // Open verification modal for deleting a project
+  const handleOpenDeleteModal = (categoryIndex, projectIndex) => {
+    setModalAction("delete");
+    setActiveCategoryIndex(categoryIndex);
+    setActiveProjectIndex(projectIndex);
+    setIsModalOpen(true);
+  };
+
+  // Validate the secret key
   const handleVerifyKey = (e) => {
     e.preventDefault();
     if (enteredKey === SECRET_KEY) {
-      setIsAuthorized(true);
+      if (modalAction === "delete") {
+        // If it's a delete action, we can execute it right here immediately after key approval
+        executeDelete();
+      } else {
+        // If it's an add action, transition to show the data entry form
+        setIsAuthorized(true);
+      }
     } else {
       alert("Invalid Secret Key! Access Denied.");
       setEnteredKey("");
     }
   };
 
-  // Step 3: Handle project form submission
+  // Execution function to remove project from state
+  const executeDelete = () => {
+    const updatedCategories = categorizedProjects.map((group, cIndex) => {
+      if (cIndex === activeCategoryIndex) {
+        return {
+          ...group,
+          projects: group.projects.filter((_, pIndex) => pIndex !== activeProjectIndex)
+        };
+      }
+      return group;
+    });
+
+    setCategorizedProjects(updatedCategories);
+    closeAndResetModal();
+  };
+
+  // Handle form submission for a new project
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    
-    // Format technologies from a comma-separated string to an array
     const techArray = newProject.tech.split(",").map(item => item.trim()).filter(Boolean);
 
     const createdProject = {
@@ -92,13 +117,9 @@ const Projects = () => {
       demo: newProject.demo || "#"
     };
 
-    // Immutably update the state array inside the specific category
     const updatedCategories = categorizedProjects.map((group, index) => {
       if (index === activeCategoryIndex) {
-        return {
-          ...group,
-          projects: [...group.projects, createdProject]
-        };
+        return { ...group, projects: [...group.projects, createdProject] };
       }
       return group;
     });
@@ -110,8 +131,10 @@ const Projects = () => {
   const closeAndResetModal = () => {
     setIsModalOpen(false);
     setIsAuthorized(false);
+    setModalAction("");
     setEnteredKey("");
     setActiveCategoryIndex(null);
+    setActiveProjectIndex(null);
     setNewProject({ title: "", description: "", tech: "", github: "", demo: "" });
   };
 
@@ -127,10 +150,7 @@ const Projects = () => {
           <div className="categoryBox" key={groupIndex}>
             <div className="categoryHeader">
               <h3 className="categoryTitle">{group.category}</h3>
-              <button 
-                className="addProjectBtn"
-                onClick={() => handleOpenAddModal(groupIndex)}
-              >
+              <button className="addProjectBtn" onClick={() => handleOpenAddModal(groupIndex)}>
                 + Add Project
               </button>
             </div>
@@ -139,7 +159,16 @@ const Projects = () => {
               {group.projects.map((project, index) => (
                 <div className="projectCard" key={index}>
                   <div className="projectContent">
-                    <h4>{project.title}</h4>
+                    <div className="cardHeaderRow">
+                      <h4>{project.title}</h4>
+                      <button 
+                        className="deleteProjectBtn" 
+                        onClick={() => handleOpenDeleteModal(groupIndex, index)}
+                        title="Delete Project"
+                      >
+                        🗑️
+                      </button>
+                    </div>
                     <p>{project.description}</p>
                     <div className="techStack">
                       {project.tech.map((t, i) => (
@@ -158,17 +187,20 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* MODAL WINDOW FOR PROTECTION & PROJECT CREATION */}
+      {/* MULTI-PURPOSE ACCESS CONTROL MODAL */}
       {isModalOpen && (
         <div className="modalOverlay">
           <div className="modalContent">
             <button className="modalCloseBtn" onClick={closeAndResetModal}>&times;</button>
             
-            {/* Phase 1: Key Check */}
-            {!isAuthorized ? (
+            {/* Phase 1: Key Check (Used for both additions and deletions) */}
+            {!isAuthorized && (modalAction === "delete" || modalAction === "add") && !isAuthorized ? (
               <form onSubmit={handleVerifyKey} className="modalForm">
                 <h3>Admin Verification Required</h3>
-                <p>Enter your secret key to add a project to <strong>{categorizedProjects[activeCategoryIndex]?.category}</strong>.</p>
+                <p>
+                  Enter your secret key to {modalAction} project 
+                  {modalAction === "delete" && " permanently"}.
+                </p>
                 <input 
                   type="password" 
                   placeholder="Secret Key" 
@@ -177,10 +209,12 @@ const Projects = () => {
                   required 
                   className="modalInput"
                 />
-                <button type="submit" className="modalSubmitBtn">Verify Identity</button>
+                <button type="submit" className="modalSubmitBtn">
+                  {modalAction === "delete" ? "Confirm Delete" : "Verify Identity"}
+                </button>
               </form>
             ) : (
-              /* Phase 2: Actual Submission Form */
+              /* Phase 2: Creation Form (Only accessible if 'add' was authorized) */
               <form onSubmit={handleFormSubmit} className="modalForm">
                 <h3>Add Project to {categorizedProjects[activeCategoryIndex]?.category}</h3>
                 
@@ -201,7 +235,7 @@ const Projects = () => {
                   className="modalInput text-area"
                 />
 
-                <label>Tech Stack (Comma-separated, e.g. React, Node, Git)</label>
+                <label>Tech Stack (Comma-separated)</label>
                 <input 
                   type="text" 
                   placeholder="React, Express, MongoDB"
