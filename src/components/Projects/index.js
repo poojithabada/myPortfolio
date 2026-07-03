@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./index.css";
 
 const Projects = () => {
-  // Read the secret key securely from the environment variables
-  const SECRET_KEY =  process.env.REACT_APP_SECRET_KEY;
+  // Safe runtime check to prevent "process is not defined" crashes
+  const SECRET_KEY = typeof process !== "undefined" && process.env 
+    ? process.env.REACT_APP_SECRET_KEY 
+    : "";
 
   // Initial state with your existing projects organized by category
   const [categorizedProjects, setCategorizedProjects] = useState([
@@ -47,23 +49,21 @@ const Projects = () => {
 
   // Modal control states
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalAction, setModalAction] = useState(""); // Tracks whether we are "add" or "delete"
+  const [modalAction, setModalAction] = useState(""); 
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(null);
-  const [activeProjectIndex, setActiveProjectIndex] = useState(null); // Tracks which project to delete
+  const [activeProjectIndex, setActiveProjectIndex] = useState(null); 
   
   // Security and Form states
   const [enteredKey, setEnteredKey] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [newProject, setNewProject] = useState({ title: "", description: "", tech: "", github: "", demo: "" });
 
-  // Open verification modal for adding a project
   const handleOpenAddModal = (categoryIndex) => {
     setModalAction("add");
     setActiveCategoryIndex(categoryIndex);
     setIsModalOpen(true);
   };
 
-  // Open verification modal for deleting a project
   const handleOpenDeleteModal = (categoryIndex, projectIndex) => {
     setModalAction("delete");
     setActiveCategoryIndex(categoryIndex);
@@ -71,15 +71,12 @@ const Projects = () => {
     setIsModalOpen(true);
   };
 
-  // Validate the secret key
   const handleVerifyKey = (e) => {
     e.preventDefault();
     if (enteredKey === SECRET_KEY) {
       if (modalAction === "delete") {
-        // If it's a delete action, we can execute it right here immediately after key approval
         executeDelete();
       } else {
-        // If it's an add action, transition to show the data entry form
         setIsAuthorized(true);
       }
     } else {
@@ -88,7 +85,6 @@ const Projects = () => {
     }
   };
 
-  // Execution function to remove project from state
   const executeDelete = () => {
     const updatedCategories = categorizedProjects.map((group, cIndex) => {
       if (cIndex === activeCategoryIndex) {
@@ -104,7 +100,6 @@ const Projects = () => {
     closeAndResetModal();
   };
 
-  // Handle form submission for a new project
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const techArray = newProject.tech.split(",").map(item => item.trim()).filter(Boolean);
@@ -193,8 +188,7 @@ const Projects = () => {
           <div className="modalContent">
             <button className="modalCloseBtn" onClick={closeAndResetModal}>&times;</button>
             
-            {/* Phase 1: Key Check (Used for both additions and deletions) */}
-            {!isAuthorized && (modalAction === "delete" || modalAction === "add") && !isAuthorized ? (
+            {!isAuthorized && (modalAction === "delete" || modalAction === "add") ? (
               <form onSubmit={handleVerifyKey} className="modalForm">
                 <h3>Admin Verification Required</h3>
                 <p>
@@ -214,7 +208,6 @@ const Projects = () => {
                 </button>
               </form>
             ) : (
-              /* Phase 2: Creation Form (Only accessible if 'add' was authorized) */
               <form onSubmit={handleFormSubmit} className="modalForm">
                 <h3>Add Project to {categorizedProjects[activeCategoryIndex]?.category}</h3>
                 
