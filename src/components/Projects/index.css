@@ -22,11 +22,32 @@
   margin-bottom: 3rem;
 }
 
+/* --- Category Box Styles --- */
+.categoryBox {
+  background: rgba(255, 255, 255, 0.05); 
+  border: 1px dashed var(--primary-orange);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.categoryTitle {
+  font-size: 2.2rem;
+  color: var(--primary-orange);
+  text-align: left;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ffd9b3;
+  display: inline-block;
+}
+/* --------------------------- */
+
 .projectsGrid {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: center;
+  justify-content: flex-start; /* Aligns items to the left inside the box */
 }
 
 .projectCard {
@@ -37,6 +58,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
+
 .projectCard:hover {
   transform: translateY(-8px);
   border-color: var(--primary-orange);
@@ -51,9 +73,10 @@
   text-align: left;
 }
 
-.projectContent h3 {
+/* Updated to h4 to match the new React component */
+.projectContent h4 {
   color: var(--primary-orange);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 0.8rem;
   line-height: 1.3;
 }
@@ -106,6 +129,7 @@
   transform: translateY(-2px);
 }
 
+/* --- Responsive Styles --- */
 @media screen and (max-width: 1200px) {
   .projectCard {
     width: 350px;
@@ -119,6 +143,15 @@
 
   .projectsTitle {
     font-size: 2.3rem;
+  }
+
+  /* Added padding adjustment for mobile screens */
+  .categoryBox {
+    padding: 1.5rem 1rem; 
+  }
+
+  .categoryTitle {
+    font-size: 1.8rem;
   }
 
   .projectsGrid {
