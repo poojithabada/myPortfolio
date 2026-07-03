@@ -1,10 +1,10 @@
 :root {
   --primary-orange: #ff6f00;
+  --primary-orange-hover: #e65c00;
   --badge-bg: #ffe0b2;
-  --danger-red: #d32f2f;
-  --danger-bg: #ffebee;
 }
 
+/* --- Section & Layout Base --- */
 .projectsSection {
   padding: 4rem 2rem;
   max-width: 1400px;
@@ -16,6 +16,7 @@
   font-size: 3rem;
   color: var(--primary-orange);
   margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .projectsIntro {
@@ -30,7 +31,7 @@
   gap: 3rem;
 }
 
-/* Category Box Styles */
+/* --- Category Box Structure --- */
 .categoryBox {
   background: rgba(255, 255, 255, 0.05); 
   border: 1px dashed var(--primary-orange);
@@ -55,7 +56,6 @@
   margin: 0;
 }
 
-/* Action Control Buttons */
 .addProjectBtn {
   background: transparent;
   color: var(--primary-orange);
@@ -72,6 +72,14 @@
   color: white;
 }
 
+.emptyCategoryText {
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  font-size: 1rem;
+  margin: 1rem 0 0 0;
+}
+
+/* --- Projects Display Grid --- */
 .projectsGrid {
   display: flex;
   flex-wrap: wrap;
@@ -79,13 +87,13 @@
   justify-content: flex-start;
 }
 
-/* Individual Project Cards */
+/* --- Project Cards --- */
 .projectCard {
   background: #ffffff;
   border: 1px solid #ffd9b3;
   border-radius: 16px;
   width: 380px;
-  position: relative; /* Keeps button rendering context clean */
+  position: relative;
   transition: all 0.3s ease;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
@@ -119,50 +127,50 @@
   flex: 1;
 }
 
-/* Modernized Sleek Delete Button */
-.deleteProjectBtn {
-  background: transparent;
-  color: #999;
-  border: 1px solid #ddd;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  padding: 0.35rem 0.7rem;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  opacity: 0.4; /* Softly hidden away when not looking directly at card */
-  transition: all 0.2s ease;
-}
-
-.deleteIcon {
-  font-size: 1.1rem;
-  line-height: 1;
-  font-weight: 300;
-}
-
-/* Smooth high-visibility contrast change on card focusing states */
-.projectCard:hover .deleteProjectBtn {
-  opacity: 1;
-  color: #777;
-}
-
-.deleteProjectBtn:hover {
-  background: var(--danger-bg) !important;
-  color: var(--danger-red) !important;
-  border-color: #ffcdd2 !important;
-}
-
 .projectContent p {
-  color: #333;
+  color: #333333;
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
+/* --- Text-Only Action Tray --- */
+.cardActionTray {
+  display: flex;
+  gap: 0.35rem;
+  opacity: 0; /* Hidden initially to maintain layout neatness */
+  transition: opacity 0.2s ease-in-out;
+  margin-top: 0.2rem;
+}
+
+/* Reveal Edit/Delete triggers seamlessly on card focus */
+.projectCard:hover .cardActionTray {
+  opacity: 1;
+}
+
+.cardActionBtn {
+  background: transparent;
+  color: #777777;
+  border: 1px solid #e0e0e0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* Unified Orange highlighting on user interactives */
+.cardActionBtn:hover {
+  background: var(--badge-bg) !important;
+  color: var(--primary-orange) !important;
+  border-color: var(--primary-orange) !important;
+}
+
+/* --- Badges & Links --- */
 .techStack {
   display: flex;
   flex-wrap: wrap;
@@ -200,11 +208,11 @@
 }
 
 .projectLinks a:hover {
-  background: #e65c00;
+  background: var(--primary-orange-hover);
   transform: translateY(-2px);
 }
 
-/* --- Modal Layout UI --- */
+/* --- Modals Framework --- */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -236,7 +244,7 @@
   font-size: 2rem;
   background: transparent;
   border: none;
-  color: #666;
+  color: #666666;
   cursor: pointer;
 }
 
@@ -253,14 +261,14 @@
 }
 
 .modalForm p {
-  color: #555;
+  color: #555555;
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
 }
 
 .modalForm label {
   font-weight: 600;
-  color: #333;
+  color: #333333;
   margin-top: 0.8rem;
   margin-bottom: 0.3rem;
 }
@@ -297,10 +305,10 @@
 }
 
 .modalSubmitBtn:hover {
-  background: #e65c00;
+  background: var(--primary-orange-hover);
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Responsive Media Rules --- */
 @media screen and (max-width: 1200px) {
   .projectCard {
     width: 350px;
@@ -330,6 +338,16 @@
     font-size: 1.8rem;
   }
 
+  .cardHeaderRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .cardActionTray {
+    opacity: 1; /* Keeps buttons visible directly on touchscreen devices */
+  }
+
   .projectsGrid {
     flex-direction: column;
     align-items: center;
@@ -340,14 +358,4 @@
     max-width: 450px;
     min-height: auto;
   }
-  
-  .deleteProjectBtn {
-    opacity: 1; /* Keep visible permanently on touchscreens */
-  }
-}
-.emptyCategoryText {
-  color: rgba(255, 255, 255, 0.4);
-  font-style: italic;
-  font-size: 1rem;
-  margin: 1rem 0 0 0;
 }

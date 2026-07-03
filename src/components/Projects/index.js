@@ -184,14 +184,14 @@ const Projects = () => {
                             onClick={() => handleOpenEditModal(groupIndex, index)}
                             title="Edit Project"
                           >
-                            ✏️ Edit
+                            Edit
                           </button>
                           <button 
                             className="cardActionBtn deleteBtn" 
                             onClick={() => handleOpenDeleteModal(groupIndex, index)}
                             title="Delete Project"
                           >
-                            🗑️ Delete
+                            Delete
                           </button>
                         </div>
                       </div>
