@@ -8,7 +8,7 @@ const Projects = () => {
   // Initial state with your existing projects organized by category
   const [categorizedProjects, setCategorizedProjects] = useState([
     {
-      category: "Full Stack Projects",
+      category: "LLMs & Gen AI",
       projects: [
         {
           title: "Building EduReach — Agentic College Chatbot",
@@ -32,7 +32,7 @@ const Projects = () => {
       ],
     },
     {
-      category: "Full Stack Projects",
+      category: "Front End Projects",
       projects: [
         {
           title: "AI-Powered Resume Builder",
