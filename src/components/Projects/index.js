@@ -77,7 +77,7 @@ description: "AI-powered web builder that transforms natural language prompts in
   "GitHub"
 ],
     github: "https://github.com/poojithabada/edureach-platform",
-    demo: "https://poojiwikipidea.ccbp.tech",
+    demo: "https://edureach-platform-lake.vercel.app",
   },
 ];
 
