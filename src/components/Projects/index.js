@@ -4,8 +4,7 @@ import "./index.css";
 const Projects = () => {
   // Define your key directly here so it works flawlessly on GitHub Pages.
   // Change "admin123" to your preferred password.
-  const SECRET_KEY = (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_SECRET_KEY) ||
-    (typeof process !== "undefined" && process.env && process.env.REACT_APP_SECRET_KEY);
+  const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
   // All 3 projects initialized under Full Stack, other categories left empty
   const [categorizedProjects, setCategorizedProjects] = useState([
