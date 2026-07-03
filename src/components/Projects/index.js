@@ -151,155 +151,256 @@ const Projects = () => {
     setProjectForm({ title: "", description: "", tech: "", github: "", demo: "" });
   };
 
-  return (
-    <section className="projectsSection" id="projects">
-      <h2 className="projectsTitle">Projects</h2>
-      <p className="projectsIntro">
-        Some recent projects. Click below to check code and live demos.
-      </p>
+ return (
+  <section className="projectsSection" id="projects">
+    <h2 className="projectsTitle">Projects</h2>
 
-      <div className="projectsContainer">
-        {categorizedProjects.map((group, groupIndex) => (
-          <div className="categoryBox" key={groupIndex}>
-            <div className="categoryHeader">
-              <h3 className="categoryTitle">{group.category}</h3>
-              <button className="addProjectBtn" onClick={() => handleOpenAddModal(groupIndex)}>
-                + Add Project
-              </button>
-            </div>
-            
-            {group.projects.length === 0 ? (
-              <p className="emptyCategoryText">No projects in this category yet.</p>
-            ) : (
+    <p className="projectsIntro">
+      Some recent projects. Click below to check code and live demos.
+    </p>
+
+    <div className="projectsContainer">
+      {categorizedProjects.map((group, groupIndex) => (
+        <div className="categoryBox" key={groupIndex}>
+          <div className="categoryHeader">
+            <h3 className="categoryTitle">{group.category}</h3>
+
+            <button
+              className="addProjectBtn"
+              onClick={() => handleOpenAddModal(groupIndex)}
+            >
+              + Add Project
+            </button>
+          </div>
+
+          {group.projects.length === 0 ? (
+            <p className="emptyCategoryText">
+              No projects in this category yet.
+            </p>
+          ) : (
+            <>
               <div className="projectsGrid">
-                {group.projects.map((project, index) => (
+                {(expandedCategories[groupIndex]
+                  ? group.projects
+                  : group.projects.slice(0, 3)
+                ).map((project, index) => (
                   <div className="projectCard" key={index}>
                     <div className="projectContent">
                       <div className="cardHeaderRow">
                         <h4>{project.title}</h4>
                       </div>
+
                       <p>{project.description}</p>
+
                       <div className="techStack">
                         {project.tech.map((t, i) => (
-                          <span key={i} className="techBadge">{t}</span>
+                          <span key={i} className="techBadge">
+                            {t}
+                          </span>
                         ))}
                       </div>
-                      
-                      {/* Controls relocated to bottom row */}
+
                       <div className="projectLinksRow">
                         <div className="projectLinks">
-                          <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                          <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo</a>
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            GitHub
+                          </a>
+
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Live Demo
+                          </a>
                         </div>
-                        
+
                         <div className="cardActionTray">
-                          <button 
-                            className="cardActionBtn" 
-                            onClick={() => handleOpenEditModal(groupIndex, index)}
+                          <button
+                            className="cardActionBtn"
+                            onClick={() =>
+                              handleOpenEditModal(groupIndex, index)
+                            }
                           >
                             Edit
                           </button>
-                          <button 
-                            className="cardActionBtn" 
-                            onClick={() => handleOpenDeleteModal(groupIndex, index)}
+
+                          <button
+                            className="cardActionBtn"
+                            onClick={() =>
+                              handleOpenDeleteModal(groupIndex, index)
+                            }
                           >
                             Delete
                           </button>
                         </div>
                       </div>
-
                     </div>
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
 
-      {/* ACCESS CONTROL MODAL SYSTEM */}
-      {isModalOpen && (
-        <div className="modalOverlay">
-          <div className="modalContent">
-            <button className="modalCloseBtn" onClick={closeAndResetModal}>&times;</button>
-            
-            {!isAuthorized && (modalAction === "delete" || modalAction === "add" || modalAction === "edit") ? (
-              <form onSubmit={handleVerifyKey} className="modalForm">
-                <h3>Admin Verification Required</h3>
-                <p>
-                  Enter your secret key to <strong>{modalAction}</strong> this project item.
-                </p>
-                <input 
-                  type="password" 
-                  placeholder="Secret Key" 
-                  value={enteredKey} 
-                  onChange={(e) => setEnteredKey(e.target.value)} 
-                  required 
-                  className="modalInput"
-                />
-                <button type="submit" className="modalSubmitBtn">
-                  {modalAction === "delete" ? "Confirm Delete" : "Verify Identity"}
+              {group.projects.length > 3 && (
+                <button
+                  className="viewMoreBtn"
+                  onClick={() => toggleCategory(groupIndex)}
+                >
+                  {expandedCategories[groupIndex]
+                    ? "View Less"
+                    : "View More"}
                 </button>
-              </form>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="modalForm">
-                <h3>
-                  {modalAction === "edit" ? "Modify Project Info" : `Add Project to ${categorizedProjects[activeCategoryIndex]?.category}`}
-                </h3>
-                
-                <label>Project Title</label>
-                <input 
-                  type="text" 
-                  value={projectForm.title} 
-                  onChange={(e) => setProjectForm({...projectForm, title: e.target.value})} 
-                  required 
-                  className="modalInput"
-                />
-
-                <label>Description</label>
-                <textarea 
-                  value={projectForm.description} 
-                  onChange={(e) => setProjectForm({...projectForm, description: e.target.value})} 
-                  required 
-                  className="modalInput text-area"
-                />
-
-                <label>Tech Stack (Comma-separated)</label>
-                <input 
-                  type="text" 
-                  placeholder="React, Express, MongoDB"
-                  value={projectForm.tech} 
-                  onChange={(e) => setProjectForm({...projectForm, tech: e.target.value})} 
-                  required 
-                  className="modalInput"
-                />
-
-                <label>GitHub Repository URL</label>
-                <input 
-                  type="url" 
-                  value={projectForm.github} 
-                  onChange={(e) => setProjectForm({...projectForm, github: e.target.value})} 
-                  className="modalInput"
-                />
-
-                <label>Live Demo URL</label>
-                <input 
-                  type="url" 
-                  value={projectForm.demo} 
-                  onChange={(e) => setProjectForm({...projectForm, demo: e.target.value})} 
-                  className="modalInput"
-                />
-
-                <button type="submit" className="modalSubmitBtn">
-                  {modalAction === "edit" ? "Save Alterations" : "Publish Project"}
-                </button>
-              </form>
-            )}
-          </div>
+              )}
+            </>
+          )}
         </div>
-      )}
-    </section>
-  );
+      ))}
+    </div>
+
+    {/* ACCESS CONTROL MODAL SYSTEM */}
+    {isModalOpen && (
+      <div className="modalOverlay">
+        <div className="modalContent">
+          <button
+            className="modalCloseBtn"
+            onClick={closeAndResetModal}
+          >
+            &times;
+          </button>
+
+          {!isAuthorized &&
+          (modalAction === "delete" ||
+            modalAction === "add" ||
+            modalAction === "edit") ? (
+            <form
+              onSubmit={handleVerifyKey}
+              className="modalForm"
+            >
+              <h3>Admin Verification Required</h3>
+
+              <p>
+                Enter your secret key to{" "}
+                <strong>{modalAction}</strong> this project item.
+              </p>
+
+              <input
+                type="password"
+                placeholder="Secret Key"
+                value={enteredKey}
+                onChange={(e) => setEnteredKey(e.target.value)}
+                required
+                className="modalInput"
+              />
+
+              <button
+                type="submit"
+                className="modalSubmitBtn"
+              >
+                {modalAction === "delete"
+                  ? "Confirm Delete"
+                  : "Verify Identity"}
+              </button>
+            </form>
+          ) : (
+            <form
+              onSubmit={handleFormSubmit}
+              className="modalForm"
+            >
+              <h3>
+                {modalAction === "edit"
+                  ? "Modify Project Info"
+                  : `Add Project to ${
+                      categorizedProjects[activeCategoryIndex]
+                        ?.category
+                    }`}
+              </h3>
+
+              <label>Project Title</label>
+              <input
+                type="text"
+                value={projectForm.title}
+                onChange={(e) =>
+                  setProjectForm({
+                    ...projectForm,
+                    title: e.target.value,
+                  })
+                }
+                required
+                className="modalInput"
+              />
+
+              <label>Description</label>
+              <textarea
+                value={projectForm.description}
+                onChange={(e) =>
+                  setProjectForm({
+                    ...projectForm,
+                    description: e.target.value,
+                  })
+                }
+                required
+                className="modalInput text-area"
+              />
+
+              <label>Tech Stack (Comma-separated)</label>
+              <input
+                type="text"
+                placeholder="React, Express, MongoDB"
+                value={projectForm.tech}
+                onChange={(e) =>
+                  setProjectForm({
+                    ...projectForm,
+                    tech: e.target.value,
+                  })
+                }
+                required
+                className="modalInput"
+              />
+
+              <label>GitHub Repository URL</label>
+              <input
+                type="url"
+                value={projectForm.github}
+                onChange={(e) =>
+                  setProjectForm({
+                    ...projectForm,
+                    github: e.target.value,
+                  })
+                }
+                className="modalInput"
+              />
+
+              <label>Live Demo URL</label>
+              <input
+                type="url"
+                value={projectForm.demo}
+                onChange={(e) =>
+                  setProjectForm({
+                    ...projectForm,
+                    demo: e.target.value,
+                  })
+                }
+                className="modalInput"
+              />
+
+              <button
+                type="submit"
+                className="modalSubmitBtn"
+              >
+                {modalAction === "edit"
+                  ? "Save Alterations"
+                  : "Publish Project"}
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    )}
+  </section>
+);
 };
 
 export default Projects;
