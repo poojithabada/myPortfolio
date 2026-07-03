@@ -3,7 +3,7 @@ import "./index.css";
 
 const Projects = () => {
   // 1. Define your secret key here
-  const SECRET_KEY = "mySecretPassword123"; 
+  const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
   // 2. Initial state with your existing projects organized by category
   const [categorizedProjects, setCategorizedProjects] = useState([
