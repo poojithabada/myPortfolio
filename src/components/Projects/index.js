@@ -177,71 +177,49 @@ const Projects = () => {
             {group.projects.length === 0 ? (
               <p className="emptyCategoryText">No projects in this category yet.</p>
             ) : (
-  <>
-    <div className="projectsGrid">
-      {(expandedCategories[groupIndex]
-        ? group.projects
-        : group.projects.slice(0, 3)
-      ).map((project, index) => (
-        <div className="projectCard" key={index}>
-          <div className="projectContent">
-            <div className="cardHeaderRow">
-              <h4>{project.title}</h4>
-            </div>
+              <div className="projectsGrid">
+                {group.projects.map((project, index) => (
+                  <div className="projectCard" key={index}>
+                    <div className="projectContent">
+                      <div className="cardHeaderRow">
+                        <h4>{project.title}</h4>
+                      </div>
+                      <p>{project.description}</p>
+                      <div className="techStack">
+                        {project.tech.map((t, i) => (
+                          <span key={i} className="techBadge">{t}</span>
+                        ))}
+                      </div>
+                      
+                      {/* Controls relocated to bottom row */}
+                      <div className="projectLinksRow">
+                        <div className="projectLinks">
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                        
+                        <div className="cardActionTray">
+                          <button 
+                            className="cardActionBtn" 
+                            onClick={() => handleOpenEditModal(groupIndex, index)}
+                          >
+                            Edit
+                          </button>
+                          <button 
+                            className="cardActionBtn" 
+                            onClick={() => handleOpenDeleteModal(groupIndex, index)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
 
-            <p>{project.description}</p>
-
-            <div className="techStack">
-              {project.tech.map((t, i) => (
-                <span key={i} className="techBadge">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="projectLinksRow">
-              <div className="projectLinks">
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-              <div className="cardActionTray">
-                <button
-                  className="cardActionBtn"
-                  onClick={() => handleOpenEditModal(groupIndex, index)}
-                >
-                  Edit
-                </button>
-
-                <button
-                  className="cardActionBtn"
-                  onClick={() => handleOpenDeleteModal(groupIndex, index)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
+            )}
           </div>
-        </div>
-      ))}
-    </div>
-
-    {group.projects.length > 3 && (
-      <button
-        className="viewMoreBtn"
-        onClick={() => toggleCategory(groupIndex)}
-      >
-        {expandedCategories[groupIndex] ? "View Less" : "View More"}
-      </button>
-    )}
-  </>
-)}
-          </div>
-          
         ))}
       </div>
 
