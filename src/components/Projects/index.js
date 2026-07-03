@@ -53,13 +53,7 @@ const Projects = () => {
   const [enteredKey, setEnteredKey] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [projectForm, setProjectForm] = useState({ title: "", description: "", tech: "", github: "", demo: "" });
-  const [expandedCategories, setExpandedCategories] = useState({});
-  const toggleCategory = (categoryIndex) => {
-  setExpandedCategories((prev) => ({
-    ...prev,
-    [categoryIndex]: !prev[categoryIndex],
-  }));
-};
+  
 
   const handleOpenAddModal = (categoryIndex) => {
     setModalAction("add");
