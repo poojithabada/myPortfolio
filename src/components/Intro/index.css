@@ -132,7 +132,7 @@
     object-fit: cover;
 
     border-radius: 50%;
-    border: 4px solid #ff7a00;
+    border: 1px solid #ff7a00;
 
     box-shadow: 0 0 25px rgba(255, 122, 0, .35);
 }
