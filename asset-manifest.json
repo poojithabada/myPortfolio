@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/myPortfolio/static/css/main.7121eb7b.css",
-    "main.js": "/myPortfolio/static/js/main.cc2bd794.js",
+    "main.css": "/myPortfolio/static/css/main.bf57f22a.css",
+    "main.js": "/myPortfolio/static/js/main.a20afbb0.js",
     "static/media/DAWorkshop.png": "/myPortfolio/static/media/DAWorkshop.bbb31bae5f37dc90cea8.png",
     "static/media/Teachingassistant.png": "/myPortfolio/static/media/Teachingassistant.d3f8b5d97528a5684663.png",
     "static/media/genAI.png": "/myPortfolio/static/media/genAI.1b77b1d8ecde714d4a01.png",
@@ -16,14 +16,14 @@
     "static/media/javascript.png": "/myPortfolio/static/media/javascript.cc7320fe0ecf55a2fa7d.png",
     "static/media/databaseSQL.png": "/myPortfolio/static/media/databaseSQL.8b5c03ab1f4c7e4eced9.png",
     "static/media/profile.jpeg": "/myPortfolio/static/media/profile.f8d2c405adaa9cd0c734.jpeg",
-    "static/media/resume.pdf": "/myPortfolio/static/media/resume.5fd0b06df6909bfd4acd.pdf",
+    "static/media/Resume.pdf": "/myPortfolio/static/media/Resume.dd4ee1ff74fd61591611.pdf",
     "static/media/ui-design.png": "/myPortfolio/static/media/ui-design.c4acd455fc2040eddcc8.png",
     "index.html": "/myPortfolio/index.html",
-    "main.7121eb7b.css.map": "/myPortfolio/static/css/main.7121eb7b.css.map",
-    "main.cc2bd794.js.map": "/myPortfolio/static/js/main.cc2bd794.js.map"
+    "main.bf57f22a.css.map": "/myPortfolio/static/css/main.bf57f22a.css.map",
+    "main.a20afbb0.js.map": "/myPortfolio/static/js/main.a20afbb0.js.map"
   },
   "entrypoints": [
-    "static/css/main.7121eb7b.css",
-    "static/js/main.cc2bd794.js"
+    "static/css/main.bf57f22a.css",
+    "static/js/main.a20afbb0.js"
   ]
 }
