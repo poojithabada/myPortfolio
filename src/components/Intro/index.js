@@ -3,7 +3,7 @@ import "./index.css";
 
 import profile from "../../assets/profile.jpeg";
 import btnImg from "../../assets/hireme.png";
-import resume from "../../assets/resume.pdf";
+import resume from "../../assets/Resume.pdf";
 
 const Intro = () => {
   const scrollToContact = () => {

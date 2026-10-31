@@ -185,9 +185,12 @@ const Projects = () => {
           <div className="categoryBox" key={groupIndex}>
             <div className="categoryHeader">
               <h3 className="categoryTitle">{group.category}</h3>
-              <button className="addProjectBtn" onClick={() => handleOpenAddModal(groupIndex)}>
-                + Add Project
-              </button>
+              <button
+  className="cardActionBtn addProjectActionBtn"
+  onClick={() => handleOpenAddModal(groupIndex)}
+>
+  + Add Project
+</button>
             </div>
             
             {group.projects.length === 0 ? (

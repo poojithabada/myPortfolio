@@ -1,10 +1,14 @@
+
 :root {
   --primary-orange: #ff6f00;
   --primary-orange-hover: #e65c00;
   --badge-bg: #ffe0b2;
 }
 
-/* --- Section & Layout Base --- */
+/* ========================================
+   SECTION & LAYOUT BASE
+======================================== */
+
 .projectsSection {
   padding: 4rem 2rem;
   max-width: 1400px;
@@ -31,9 +35,12 @@
   gap: 3rem;
 }
 
-/* --- Category Box Structure --- */
+/* ========================================
+   CATEGORY BOX STRUCTURE
+======================================== */
+
 .categoryBox {
-  background: rgba(255, 255, 255, 0.05); 
+  background: rgba(255, 255, 255, 0.05);
   border: 1px dashed var(--primary-orange);
   border-radius: 20px;
   padding: 2.5rem 2rem;
@@ -56,30 +63,59 @@
   margin: 0;
 }
 
-.addProjectBtn {
-  background: transparent;
-  color: var(--primary-orange);
-  border: 2px solid var(--primary-orange);
-  padding: 0.5rem 1.2rem;
-  font-weight: 600;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.addProjectBtn:hover {
-  background: var(--primary-orange);
-  color: white;
-}
-
 .emptyCategoryText {
   color: rgba(255, 255, 255, 0.4);
   font-style: italic;
   font-size: 1rem;
-  margin: 1rem 0 0 0;
+  margin: 1rem 0 0;
 }
 
-/* --- Projects Display Grid --- */
+/* ========================================
+   ADD PROJECT BUTTON
+   Same style as Edit and Delete
+======================================== */
+
+.addProjectActionBtn {
+  background: transparent;
+  color: #888888;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Show Add Project when hovering category */
+
+.categoryBox:hover .addProjectActionBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Show when keyboard focused */
+
+.categoryBox:focus-within .addProjectActionBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Add Project hover effect */
+
+.addProjectActionBtn:hover {
+  color: #cf5b00;
+  text-decoration-color: #cf5b00;
+}
+
+/* ========================================
+   PROJECTS DISPLAY GRID
+======================================== */
+
 .projectsGrid {
   display: flex;
   flex-wrap: wrap;
@@ -87,7 +123,10 @@
   justify-content: flex-start;
 }
 
-/* --- Project Cards --- */
+/* ========================================
+   PROJECT CARDS
+======================================== */
+
 .projectCard {
   background: #ffffff;
   border: 1px solid #ffd9b3;
@@ -111,9 +150,12 @@
   height: 100%;
 }
 
-/* --- Card Typography & Content --- */
+/* ========================================
+   CARD TYPOGRAPHY & CONTENT
+======================================== */
+
 .cardHeaderRow {
-  display: block; 
+  display: block;
   margin-bottom: 0.8rem;
 }
 
@@ -130,6 +172,10 @@
   line-height: 1.8;
   margin-bottom: 1rem;
 }
+
+/* ========================================
+   TECH STACK BADGES
+======================================== */
 
 .techStack {
   display: flex;
@@ -149,12 +195,15 @@
   font-weight: 500;
 }
 
-/* --- Bottom Links & Admin Trays --- */
+/* ========================================
+   PROJECT LINKS
+======================================== */
+
 .projectLinksRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto; /* Pushes the entire row nicely to the bottom */
+  margin-top: auto;
   padding-top: 1rem;
 }
 
@@ -180,11 +229,14 @@
   transform: translateY(-2px);
 }
 
-/* Elegant Text-Only Trays */
+/* ========================================
+   EDIT & DELETE ACTION BUTTONS
+======================================== */
+
 .cardActionTray {
   display: flex;
   gap: 0.75rem;
-  opacity: 0; /* Hides controls cleanly until user focuses */
+  opacity: 0;
   transition: opacity 0.25s ease-in-out;
 }
 
@@ -207,11 +259,14 @@
 }
 
 .cardActionBtn:hover {
-  color: #cf5b00; 
+  color: #cf5b00;
   text-decoration-color: #cf5b00;
 }
 
-/* --- Modals Framework --- */
+/* ========================================
+   MODAL FRAMEWORK
+======================================== */
+
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -246,6 +301,10 @@
   color: #666666;
   cursor: pointer;
 }
+
+/* ========================================
+   MODAL FORM
+======================================== */
 
 .modalForm {
   display: flex;
@@ -290,6 +349,10 @@
   resize: vertical;
 }
 
+/* ========================================
+   MODAL SUBMIT BUTTON
+======================================== */
+
 .modalSubmitBtn {
   background: var(--primary-orange);
   color: white;
@@ -300,14 +363,40 @@
   border-radius: 8px;
   cursor: pointer;
   margin-top: 1.5rem;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .modalSubmitBtn:hover {
   background: var(--primary-orange-hover);
 }
 
-/* --- Responsive Media Rules --- */
+/* ========================================
+   VIEW MORE BUTTON
+======================================== */
+
+.viewMoreBtn {
+  display: block;
+  margin: 2rem auto 1rem;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  color: var(--primary-orange);
+  border: 2px solid var(--primary-orange);
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewMoreBtn:hover {
+  background: var(--primary-orange);
+  color: #ffffff;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
 @media screen and (max-width: 1200px) {
   .projectCard {
     width: 350px;
@@ -315,6 +404,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
   .projectsSection {
     padding: 3rem 1rem;
   }
@@ -337,14 +427,21 @@
     font-size: 1.8rem;
   }
 
+  /* Always show Add Project on mobile */
+  .addProjectActionBtn {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Always show Edit and Delete on mobile */
+  .cardActionTray {
+    opacity: 1;
+  }
+
   .projectLinksRow {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
-  }
-
-  .cardActionTray {
-    opacity: 1; /* Keeps admin controls visible directly on touchscreen devices */
   }
 
   .projectsGrid {
@@ -357,23 +454,4 @@
     max-width: 450px;
     min-height: auto;
   }
-}
-/* VIEW MORE BUTTON STYLING */
-.viewMoreBtn {
-  display: block;
-  margin: 2rem auto 1rem auto;
-  padding: 0.75rem 2rem;
-  background: transparent;
-  color: var(--primary-orange, #cf5b00); /* Falls back to hex if var is missing */
-  border: 2px solid var(--primary-orange, #cf5b00);
-  border-radius: 30px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.viewMoreBtn:hover {
-  background: var(--primary-orange, #cf5b00);
-  color: #ffffff;
 }
