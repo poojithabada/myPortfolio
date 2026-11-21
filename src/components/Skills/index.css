@@ -1,66 +1,106 @@
-#skills{
-    overflow:hidden;
-    width:100vw;
-    max-width:65rem;
-    display:flex;
+/* =============================================
+   SKILLS SECTION
+============================================= */
+#skills {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin:0 auto;
 }
-.skillTitle{
+
+.skillTitle {
     font-size: 3rem;
-    font-weight: 600;
-    padding-top: 3rem;
-    color:#ff6f00;
+    font-weight: 700;
+    color: #ff6f00;
+    margin-bottom: 0.75rem;
 }
-.skillDesc{
-     font-weight: 300;
-     font-size: 1rem;
-     max-width: 50rem;
-     padding: 0 2rem;
+
+.skillDesc {
+    font-weight: 300;
+    font-size: 1rem;
+    max-width: 50rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
 }
-.skillBars{
-    margin:1.5rem;
-    width:100vw;
-    max-width:80%;
+
+.skillBars {
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.skillBar {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1.4rem 1.8rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 111, 0, 0.15);
+    transition: border-color 0.3s ease, transform 0.3s ease;
     text-align: left;
 }
-.skillBar{
-    display:flex;
-    margin:1rem;
-    padding:1.5rem 2rem;
-    border-radius: 0.5rem;
-    background: rgb(50,50,50); 
+
+.skillBar:hover {
+    border-color: rgba(255, 111, 0, 0.5);
+    transform: translateX(6px);
 }
-.skillBarImg{
+
+.skillBarImg {
     object-fit: cover;
-    height:3rem;
-    width:3rem;
-    margin-right: 2rem;
+    height: 3rem;
+    width: 3rem;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
 }
-.skillBarText{
-    font-size:0.9rem;
-    font-weight:200;
+
+.skillBarText h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.3rem;
 }
-@media screen and (max-width:720px){
-    .skillBarText{
-        font-size:2vw;
+
+.skillBarText p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media screen and (max-width: 768px) {
+    #skills {
+        padding: 3rem 1.2rem;
     }
 
-}
-@media screen and (max-width:480px){
-    .skillBarText>p{
-        font-size:2vw;
+    .skillTitle {
+        font-size: 2.3rem;
     }
-    .skillBarImg{
-        height:2.25rem;
-        width:2.25rem;
+
+    .skillBar {
+        padding: 1.2rem;
     }
-    .skillBarText>h2{
-        font-size: 5vw;
-        
+
+    .skillBarImg {
+        height: 2.4rem;
+        width: 2.4rem;
+        margin-right: 1rem;
     }
-    
+
+    .skillBarText h2 {
+        font-size: 1rem;
+    }
+
+    .skillBarText p {
+        font-size: 0.82rem;
+    }
 }

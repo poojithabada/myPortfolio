@@ -1,184 +1,166 @@
-#contactPage{
-    min-height:calc(100vh-4rem);
-    width:100vw;
-    max-width:60rem;
-    margin:0 auto;
-    text-align: center;
+/* =============================================
+   CONTACT PAGE WRAPPER
+============================================= */
+#contactPage {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+}
 
+/* =============================================
+   "MY EXPERIENCE" WORKSHOP SUBSECTION
+============================================= */
+.experience {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 111, 0, 0.15);
 }
-.ContactPageTitle{
-    font-size:3rem;
-    margin-bottom:1rem;
-    color:#ff6f00;
+
+.ContactPageTitle {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ff6f00;
 }
-.contactPageDesc{
+
+.contactPageDesc {
     font-weight: 300;
     font-size: 1rem;
-
+    max-width: 50rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    margin: 0 auto 2rem;
 }
-.experienceImgs{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width:100vw;
-    max-width:65rem;
-    flex-wrap:wrap;
 
-}
+/* Workshop image grid */
 .experienceImgs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
 }
 
 .experienceContainer {
-  position: relative;
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 0.5rem;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experienceContainer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 111, 0, 0.2);
 }
 
 .experienceImg {
-  object-fit: cover;
-  height: 15rem;
-  border-radius: 5px;
-  display: block;
+    object-fit: cover;
+    height: 15rem;
+    border-radius: 8px;
+    display: block;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
-  #contactPage {
-    padding: 2rem 1rem;
-  }
-
-  .ContactPageTitle {
-    font-size: 2.2rem;
-  }
-
-  .contactPageDesc {
-    font-size: 0.95rem;
-    padding: 0 1rem;
-  }
-
-  .experienceImgs {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .experienceImg {
-    width: 18rem;
-    height: auto;
-  }
-
-  .contactForm {
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .name,
-  .email,
-  .msg {
-    max-width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .submit {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-  }
-
-  .social-icons {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .social-icons a {
-    font-size: 1.5rem;
-    padding: 0.4rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .ContactPageTitle {
-    font-size: 1.8rem;
-  }
-
-  .submit {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
-
-  .social-icons a {
-    font-size: 1.2rem;
-    padding: 0.3rem;
-  }
-}
-
-.experienceImg:hover{
-    border: 3px solid #ac7118;
+.experienceImg:hover {
+    border-color: #ff6f00;
 }
 
 .experienceLinkIcon {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 40px;        
-  height: 40px;          
-  background-color: #ff6f00;
-  color: white;
-  font-size: 18px;
-  border-radius: 50%;    
-  text-align: center;
-  line-height: 40px;   
-  text-decoration: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    background-color: #ff6f00;
+    color: white;
+    font-size: 16px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
 }
-
 
 .experienceContainer:hover .experienceLinkIcon {
-  opacity: 1;
+    opacity: 1;
 }
 
-.contactDesc{
-    padding:1rem;
-    font-size: medium;
-    font-weight: 300;  
+/* =============================================
+   CONTACT FORM SECTION
+============================================= */
+#contact {
+    width: 100%;
+    text-align: center;
 }
-.contactForm{
-    margin:1rem;
-    display:flex;
+
+.contactDesc {
+    display: block;
+    padding: 0.5rem 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+}
+
+.contactForm {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width:90vw;
-    max-width: 60rem;
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    gap: 0.75rem;
 }
-.name,.email,.msg{
-    font-size: medium;
-    width:100%;
-    max-width:40rem;
-    margin:0.5rem;
-    padding: 0.5rem 1rem;
-    color:white;
-    border:none;
-    border-radius:0.5rem;
-    background-color: rgb(40,40,40);
+
+.name,
+.email,
+.msg {
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    color: white;
+    border: 1px solid rgba(255, 111, 0, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.05);
+    outline: none;
+    transition: border-color 0.2s ease;
 }
+
+.name:focus,
+.email:focus,
+.msg:focus {
+    border-color: #ff6f00;
+}
+
+.name::placeholder,
+.email::placeholder,
+.msg::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+.msg {
+    resize: vertical;
+    min-height: 120px;
+}
+
 .submit {
-    background: #ff6600;
+    background: #ff6f00;
     color: white;
     padding: 0.75rem 3.5rem;
     border: none;
-    margin: 2rem;
-    border-radius: 0.5rem;
+    margin-top: 0.75rem;
+    border-radius: 8px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
 }
@@ -188,21 +170,68 @@
     transform: scale(1.05);
 }
 
+/* Social icons */
+.links {
+    margin-top: 1.5rem;
+}
+
 .social-icons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
 }
 
 .social-icons a {
-  color: white;
-  background-color: #222;
-  border-radius: 50%;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
+    color: white;
+    background-color: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #ff6600;
-  transform: scale(1.2);
+    color: #ff6f00;
+    background-color: rgba(255, 111, 0, 0.12);
+    transform: scale(1.2);
+}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media screen and (max-width: 768px) {
+    #contactPage {
+        padding: 3rem 1.2rem;
+    }
+
+    .ContactPageTitle {
+        font-size: 2.3rem;
+    }
+
+    .contactPageDesc {
+        font-size: 0.95rem;
+    }
+
+    .experienceImg {
+        height: 12rem;
+    }
+
+    .contactForm {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .ContactPageTitle {
+        font-size: 1.9rem;
+    }
+
+    .experienceImg {
+        width: 90vw;
+        height: auto;
+    }
 }

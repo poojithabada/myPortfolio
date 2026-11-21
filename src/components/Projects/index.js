@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"; // <-- Added useEffect here
+import React, { useState, useEffect } from "react";
 import "./index.css";
 
 const Projects = () => {
   
   const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
 
-  // NEW: Check local storage first. If empty, load the default projects.
+  // Check local storage first. If empty, load the default projects.
   const [categorizedProjects, setCategorizedProjects] = useState(() => {
     const savedProjects = localStorage.getItem("my_portfolio_projects");
     if (savedProjects) {
@@ -50,7 +50,7 @@ const Projects = () => {
     ];
   });
 
-  // NEW: Save to local storage every time 'categorizedProjects' changes
+  // Save to local storage every time 'categorizedProjects' changes
   useEffect(() => {
     localStorage.setItem("my_portfolio_projects", JSON.stringify(categorizedProjects));
   }, [categorizedProjects]);
@@ -65,6 +65,9 @@ const Projects = () => {
   const [enteredKey, setEnteredKey] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [projectForm, setProjectForm] = useState({ title: "", description: "", tech: "", github: "", demo: "" });
+
+  // State for new category name input
+  const [newCategoryName, setNewCategoryName] = useState("");
   
   // State to track which categories are expanded
   const [expandedCategories, setExpandedCategories] = useState({});
@@ -77,6 +80,7 @@ const Projects = () => {
     }));
   };
 
+  // ── Project handlers ──────────────────────────────────────────────
   const handleOpenAddModal = (categoryIndex) => {
     setModalAction("add");
     setActiveCategoryIndex(categoryIndex);
@@ -106,11 +110,26 @@ const Projects = () => {
     setIsModalOpen(true);
   };
 
+  // ── Category handlers ─────────────────────────────────────────────
+  const handleOpenAddCategoryModal = () => {
+    setModalAction("addCategory");
+    setIsModalOpen(true);
+  };
+
+  const handleOpenDeleteCategoryModal = (categoryIndex) => {
+    setModalAction("deleteCategory");
+    setActiveCategoryIndex(categoryIndex);
+    setIsModalOpen(true);
+  };
+
+  // ── Auth & Submit ─────────────────────────────────────────────────
   const handleVerifyKey = (e) => {
     e.preventDefault();
     if (enteredKey === SECRET_KEY) {
       if (modalAction === "delete") {
         executeDelete();
+      } else if (modalAction === "deleteCategory") {
+        executeDeleteCategory();
       } else {
         setIsAuthorized(true); 
       }
@@ -130,6 +149,12 @@ const Projects = () => {
       }
       return group;
     });
+    setCategorizedProjects(updatedCategories);
+    closeAndResetModal();
+  };
+
+  const executeDeleteCategory = () => {
+    const updatedCategories = categorizedProjects.filter((_, cIndex) => cIndex !== activeCategoryIndex);
     setCategorizedProjects(updatedCategories);
     closeAndResetModal();
   };
@@ -163,6 +188,14 @@ const Projects = () => {
     closeAndResetModal();
   };
 
+  const handleAddCategorySubmit = (e) => {
+    e.preventDefault();
+    const trimmed = newCategoryName.trim();
+    if (!trimmed) return;
+    setCategorizedProjects(prev => [...prev, { category: trimmed, projects: [] }]);
+    closeAndResetModal();
+  };
+
   const closeAndResetModal = () => {
     setIsModalOpen(false);
     setIsAuthorized(false);
@@ -171,11 +204,43 @@ const Projects = () => {
     setActiveCategoryIndex(null);
     setActiveProjectIndex(null);
     setProjectForm({ title: "", description: "", tech: "", github: "", demo: "" });
+    setNewCategoryName("");
+  };
+
+  // ── Helpers ───────────────────────────────────────────────────────
+  const needsKeyFirst = !isAuthorized && (
+    modalAction === "delete" ||
+    modalAction === "deleteCategory" ||
+    modalAction === "add" ||
+    modalAction === "edit" ||
+    modalAction === "addCategory"
+  );
+
+  const getModalTitle = () => {
+    switch (modalAction) {
+      case "addCategory":   return "Add New Project Category";
+      case "deleteCategory":return `Delete "${categorizedProjects[activeCategoryIndex]?.category}"?`;
+      case "edit":          return "Modify Project Info";
+      case "delete":        return "Delete Project?";
+      default:
+        return `Add Project to ${categorizedProjects[activeCategoryIndex]?.category}`;
+    }
   };
 
   return (
     <section className="projectsSection" id="projects">
-      <h2 className="projectsTitle">Projects</h2>
+      {/* Section header with Add Category button */}
+      <div className="sectionTitleRow">
+        <h2 className="projectsTitle">Projects</h2>
+        <button
+          className="addCategoryBtn"
+          onClick={handleOpenAddCategoryModal}
+          title="Add a new project category"
+        >
+          + Add Category
+        </button>
+      </div>
+
       <p className="projectsIntro">
         Some recent projects. Click below to check code and live demos.
       </p>
@@ -185,12 +250,20 @@ const Projects = () => {
           <div className="categoryBox" key={groupIndex}>
             <div className="categoryHeader">
               <h3 className="categoryTitle">{group.category}</h3>
-              <button
-  className="cardActionBtn addProjectActionBtn"
-  onClick={() => handleOpenAddModal(groupIndex)}
->
-  + Add Project
-</button>
+              <div className="categoryHeaderActions">
+                <button
+                  className="cardActionBtn addProjectActionBtn"
+                  onClick={() => handleOpenAddModal(groupIndex)}
+                >
+                  + Add Project
+                </button>
+                <button
+                  className="cardActionBtn deleteCategoryBtn"
+                  onClick={() => handleOpenDeleteCategoryModal(groupIndex)}
+                >
+                  Delete Category
+                </button>
+              </div>
             </div>
             
             {group.projects.length === 0 ? (
@@ -254,16 +327,21 @@ const Projects = () => {
         ))}
       </div>
 
+      {/* ── MODAL ───────────────────────────────────────────── */}
       {isModalOpen && (
         <div className="modalOverlay">
           <div className="modalContent">
             <button className="modalCloseBtn" onClick={closeAndResetModal}>&times;</button>
             
-            {!isAuthorized && (modalAction === "delete" || modalAction === "add" || modalAction === "edit") ? (
+            {/* Step 1 — Key verification for all actions */}
+            {needsKeyFirst ? (
               <form onSubmit={handleVerifyKey} className="modalForm">
                 <h3>Admin Verification Required</h3>
                 <p>
-                  Enter your secret key to <strong>{modalAction}</strong> this project item.
+                  Enter your secret key to <strong>{modalAction.replace("Category", " category")}</strong>.
+                  {(modalAction === "deleteCategory") && (
+                    <span className="deleteWarning"> This will also remove all projects inside it.</span>
+                  )}
                 </p>
                 <input 
                   type="password" 
@@ -274,14 +352,29 @@ const Projects = () => {
                   className="modalInput"
                 />
                 <button type="submit" className="modalSubmitBtn">
-                  {modalAction === "delete" ? "Confirm Delete" : "Verify Identity"}
+                  {(modalAction === "delete" || modalAction === "deleteCategory") ? "Confirm Delete" : "Verify Identity"}
                 </button>
               </form>
+            ) : modalAction === "addCategory" ? (
+              /* Step 2a — Add Category form */
+              <form onSubmit={handleAddCategorySubmit} className="modalForm">
+                <h3>Add New Project Category</h3>
+                <label>Category Name</label>
+                <input 
+                  type="text"
+                  placeholder="e.g. Data Science, Mobile Apps"
+                  value={newCategoryName}
+                  onChange={(e) => setNewCategoryName(e.target.value)}
+                  required
+                  className="modalInput"
+                  autoFocus
+                />
+                <button type="submit" className="modalSubmitBtn">Create Category</button>
+              </form>
             ) : (
+              /* Step 2b — Add / Edit project form */
               <form onSubmit={handleFormSubmit} className="modalForm">
-                <h3>
-                  {modalAction === "edit" ? "Modify Project Info" : `Add Project to ${categorizedProjects[activeCategoryIndex]?.category}`}
-                </h3>
+                <h3>{getModalTitle()}</h3>
                 
                 <label>Project Title</label>
                 <input 

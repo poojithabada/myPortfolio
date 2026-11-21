@@ -16,11 +16,50 @@
   text-align: center;
 }
 
+/* ── Section title row (Projects h2 + Add Category btn) ── */
+.sectionTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
 .projectsTitle {
   font-size: 3rem;
   color: var(--primary-orange);
   margin-bottom: 0.5rem;
   font-weight: 700;
+}
+
+/* "Add Category" — appears on hover of the entire section */
+.addCategoryBtn {
+  background: transparent;
+  color: #888888;
+  border: 1px dashed transparent;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease-in-out;
+  white-space: nowrap;
+}
+
+.projectsSection:hover .addCategoryBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.addCategoryBtn:hover {
+  color: var(--primary-orange);
+  text-decoration-color: var(--primary-orange);
+  border-color: rgba(255, 111, 0, 0.3);
 }
 
 .projectsIntro {
@@ -63,6 +102,22 @@
   margin: 0;
 }
 
+/* wrapper that holds both the Add Project + Delete Category buttons */
+.categoryHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.categoryBox:hover .categoryHeaderActions,
+.categoryBox:focus-within .categoryHeaderActions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .emptyCategoryText {
   color: rgba(255, 255, 255, 0.4);
   font-style: italic;
@@ -71,11 +126,11 @@
 }
 
 /* ========================================
-   ADD PROJECT BUTTON
-   Same style as Edit and Delete
+   ADD PROJECT / DELETE CATEGORY BUTTONS
 ======================================== */
 
-.addProjectActionBtn {
+.addProjectActionBtn,
+.deleteCategoryBtn {
   background: transparent;
   color: #888888;
   border: none;
@@ -86,30 +141,17 @@
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 4px;
-  opacity: 0;
-  pointer-events: none;
   transition: all 0.25s ease-in-out;
 }
 
-/* Show Add Project when hovering category */
-
-.categoryBox:hover .addProjectActionBtn {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Show when keyboard focused */
-
-.categoryBox:focus-within .addProjectActionBtn {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* Add Project hover effect */
-
 .addProjectActionBtn:hover {
-  color: #cf5b00;
-  text-decoration-color: #cf5b00;
+  color: var(--primary-orange);
+  text-decoration-color: var(--primary-orange);
+}
+
+.deleteCategoryBtn:hover {
+  color: #c0392b;
+  text-decoration-color: #c0392b;
 }
 
 /* ========================================
@@ -324,6 +366,11 @@
   margin-bottom: 1.5rem;
 }
 
+.deleteWarning {
+  color: #c0392b;
+  font-weight: 600;
+}
+
 .modalForm label {
   font-weight: 600;
   color: #333333;
@@ -338,6 +385,9 @@
   font-size: 1rem;
   margin-bottom: 0.5rem;
   outline: none;
+  background: #ffffff;
+  color: #333333;
+  font-family: inherit;
 }
 
 .modalInput:focus {
@@ -409,6 +459,16 @@
     padding: 3rem 1rem;
   }
 
+  .sectionTitleRow {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .addCategoryBtn {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .projectsTitle {
     font-size: 2.3rem;
   }
@@ -423,14 +483,13 @@
     gap: 1rem;
   }
 
-  .categoryTitle {
-    font-size: 1.8rem;
-  }
-
-  /* Always show Add Project on mobile */
-  .addProjectActionBtn {
+  .categoryHeaderActions {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .categoryTitle {
+    font-size: 1.8rem;
   }
 
   /* Always show Edit and Delete on mobile */

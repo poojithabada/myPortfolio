@@ -1,40 +1,65 @@
-.navbar{
-    background: rgb(30,30,30);
-    height:5rem;
-    width:100vw;
-    margin:0 auto;
-    padding:1rem 2rem;
-    display:flex;
-    align-items:center;
+/* =============================================
+   NAVBAR — sticky top bar, full width of .App
+============================================= */
+.navbar {
+    background: rgb(30, 30, 30);
+    height: 5rem;
+    width: 100%;
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    position:sticky;
-    top:0;
-    z-index:3;
-    max-width:75rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 111, 0, 0.12);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
-.logoText{
-    color:#ff6f00;
+.logoText {
+    color: #ff6f00;
     font-size: 1.5rem;
-}
-.desktopMenuListItem{
-    margin:1rem;
-    cursor:pointer;    
-}
-.desktopMenuListItem:hover{
-    color:#ff6f00;
-    padding-bottom: 0.5rem;
-    border-bottom:3px solid #ff6f00;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
+/* Desktop nav links */
+.desktopMenu {
+    display: flex;
+    align-items: center;
+}
+
+.desktopMenuListItem {
+    margin: 0 1rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: white;
+    transition: color 0.2s ease;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+}
+
+.desktopMenuListItem:hover {
+    color: #ff6f00;
+    border-bottom-color: #ff6f00;
+}
+
+.active {
+    color: #ff6f00;
+    border-bottom: 2px solid #ff6f00;
+    padding-bottom: 3px;
+}
+
+/* Contact Me button */
 .desktopMenuBtn {
-    padding: 0.4rem 0.8rem;
+    padding: 0.45rem 1.1rem;
     border: 2px solid #ff6f00;
     border-radius: 10px;
     background-color: #ff6f00;
     color: white;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -47,46 +72,63 @@
     transform: scale(1.05);
 }
 
-.active{
-    color:#ff6f00;
-    padding-bottom: 0.5rem;
-    border-bottom: 3px solid #ff6f00;
-    
-}
-.navMenu{
-    position:absolute;
-    top:4rem;
-    right:2rem;
-    z-index: 2;
-    display:flex;
-    flex-direction:column;
-    padding:0.5rem;
-    height:fit-content;
-    min-width:15rem;
-    background-color: rgb(40,40,40);
-    border-radius: 1rem;
-}
-.listItem{
-    color:white;
-    padding:0.5rem 3rem;
-    margin: 0.25rem;
-    background-color: rgb(30,30,30);
-}
-.mobMenu{
-    display:none;
+/* Mobile hamburger icon */
+.mobMenu {
+    display: none;
     object-fit: cover;
-    height:1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+}
 
+/* Mobile dropdown menu */
+.navMenu {
+    position: absolute;
+    top: 5rem;
+    right: 1.5rem;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    min-width: 15rem;
+    background-color: rgb(40, 40, 40);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 111, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
-@media screen and (max-width:720px){
-    .mobMenu{
-    display:flex;
 
+.listItem {
+    color: white;
+    padding: 0.6rem 1.5rem;
+    margin: 0.2rem;
+    border-radius: 0.5rem;
+    background-color: rgb(30, 30, 30);
+    font-size: 0.95rem;
+    transition: color 0.2s ease, background 0.2s ease;
+    cursor: pointer;
 }
-.desktopMenu{
-    display:none;
+
+.listItem:hover {
+    color: #ff6f00;
+    background-color: rgba(255, 111, 0, 0.08);
 }
-.desktopMenuBtn{
-    display:none;
-}
+
+/* =============================================
+   RESPONSIVE
+============================================= */
+@media screen and (max-width: 720px) {
+    .navbar {
+        padding: 1rem 1.2rem;
+    }
+
+    .mobMenu {
+        display: flex;
+    }
+
+    .desktopMenu {
+        display: none;
+    }
+
+    .desktopMenuBtn {
+        display: none;
+    }
 }
