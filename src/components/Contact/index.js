@@ -30,7 +30,7 @@ const Contact = () => {
   return (
     <section id="contactPage">
       <div className="experience">
-        <h1 className="ContactPageTitle">My Experience</h1>
+        <h1 className="ContactPageTitle">My Achievements</h1>
         <p className="contactPageDesc">
           I attended hands-on workshops on Generative AI, Data Analytics, and Email Investigation, gaining practical skills by building real-time applications. I also served as a Teaching Assistant at NxtWave, mentoring students and supporting their technical learning journey.
         </p>

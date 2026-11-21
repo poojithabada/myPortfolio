@@ -25,6 +25,9 @@ const Experience = () => {
   const [enteredKey, setEnteredKey] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
 
+  // Employment type options
+  const EMP_TYPES = ["Internship", "Teaching Assistant", "Full-time", "Part-time", "Contract"];
+
   // Form state
   const [expForm, setExpForm] = useState({
     company: "",
@@ -135,10 +138,11 @@ const Experience = () => {
 
   const typeBadgeClass = (type) => {
     switch (type) {
-      case "Full-time":   return "typeBadge typeFull";
-      case "Part-time":   return "typeBadge typePart";
-      case "Contract":    return "typeBadge typeContract";
-      default:            return "typeBadge typeInternship";
+      case "Teaching Assistant": return "typeBadge typeTA";
+      case "Full-time":          return "typeBadge typeFull";
+      case "Part-time":          return "typeBadge typePart";
+      case "Contract":           return "typeBadge typeContract";
+      default:                   return "typeBadge typeInternship";
     }
   };
 
@@ -320,10 +324,7 @@ const Experience = () => {
                       }
                       className="expModalInput expModalSelect"
                     >
-                      <option>Internship</option>
-                      <option>Full-time</option>
-                      <option>Part-time</option>
-                      <option>Contract</option>
+                      {EMP_TYPES.map(t => <option key={t}>{t}</option>)}
                     </select>
                   </div>
 
