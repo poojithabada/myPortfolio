@@ -3,13 +3,36 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    background: transparent;
     font-family: 'Poppins', sans-serif;
 }
 
 body {
     background: rgb(30, 30, 30);
     color: white;
+    overflow-x: hidden;
+}
+
+/* =============================================
+   GLOBAL PAGE WRAPPER
+   All sections are centered inside this.
+   Max width keeps content readable on wide screens.
+============================================= */
+#root {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.App {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Utility: visually hidden (accessibility) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0,0,0,0);
     overflow: hidden;
-    overflow-y: scroll;
 }
