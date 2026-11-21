@@ -170,9 +170,6 @@ const Experience = () => {
         ) : (
           experiences.map((exp, index) => (
             <div className="timelineItem" key={index}>
-              {/* Dot & line */}
-              <div className="timelineDot" />
-
               {/* Card */}
               <div className="expCard">
                 {/* Top row */}

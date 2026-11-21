@@ -2,236 +2,458 @@
    CONTACT PAGE WRAPPER
 ============================================= */
 #contactPage {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* =============================================
-   "MY EXPERIENCE" WORKSHOP SUBSECTION
+   MY ACHIEVEMENTS SUBSECTION
 ============================================= */
 .experience {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 4rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255, 111, 0, 0.15);
+  width: 100%;
+  text-align: center;
+  margin-bottom: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 111, 0, 0.15);
+}
+
+/* Title row with Add button */
+.achTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .ContactPageTitle {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #ff6f00;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ff6f00;
+}
+
+/* "+ Add Achievement" — hover-reveal */
+.addAchBtn {
+  background: transparent;
+  color: #888888;
+  border: 1px dashed transparent;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease-in-out;
+  white-space: nowrap;
+}
+
+.experience:hover .addAchBtn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.addAchBtn:hover {
+  color: #ff6f00;
+  text-decoration-color: #ff6f00;
+  border-color: rgba(255, 111, 0, 0.3);
 }
 
 .contactPageDesc {
-    font-weight: 300;
-    font-size: 1rem;
-    max-width: 50rem;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.8;
-    margin: 0 auto 2rem;
+  font-weight: 300;
+  font-size: 1rem;
+  max-width: 50rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.8;
+  margin: 0.5rem auto 2rem;
 }
 
-/* Workshop image grid */
+/* Achievement image grid */
 .experienceImgs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 .experienceContainer {
-    position: relative;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .experienceContainer:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(255, 111, 0, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255, 111, 0, 0.2);
 }
 
 .experienceImg {
-    object-fit: cover;
-    height: 15rem;
-    border-radius: 8px;
-    display: block;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+  object-fit: cover;
+  height: 15rem;
+  border-radius: 8px;
+  display: block;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
 .experienceImg:hover {
-    border-color: #ff6f00;
+  border-color: #ff6f00;
 }
 
 .experienceLinkIcon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 36px;
-    height: 36px;
-    background-color: #ff6f00;
-    color: white;
-    font-size: 16px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 36px;
-    text-decoration: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background-color: #ff6f00;
+  color: white;
+  font-size: 16px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .experienceContainer:hover .experienceLinkIcon {
-    opacity: 1;
+  opacity: 1;
 }
+
+/* Delete (✕) button — hover-reveal top-right */
+.achDeleteBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  background: rgba(192, 57, 43, 0.85);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+  z-index: 2;
+}
+
+.experienceContainer:hover .achDeleteBtn {
+  opacity: 1;
+}
+
+.achDeleteBtn:hover {
+  transform: scale(1.15);
+  background: #c0392b;
+}
+
+/* See More / Less */
+.achMoreBtn {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.6rem 2.5rem;
+  background: transparent;
+  color: #ff6f00;
+  border: 2px solid #ff6f00;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.achMoreBtn:hover {
+  background: #ff6f00;
+  color: white;
+}
+
+/* =============================================
+   ACHIEVEMENT MODAL
+============================================= */
+.achModalOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.achModalContent {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  text-align: left;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.achModalCloseBtn {
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.achModalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.achModalForm h3 {
+  color: #ff6f00;
+  margin: 0 0 0.8rem;
+  font-size: 1.5rem;
+}
+
+.achModalForm p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.achModalForm label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.88rem;
+  margin-top: 0.6rem;
+}
+
+.achOptional {
+  font-weight: 400;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.achModalInput {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #ffd9b3;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #ffffff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.achModalInput:focus { border-color: #ff6f00; }
+
+.achFileWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.achFileInput { display: none; }
+
+.achFileLabel {
+  display: inline-block;
+  padding: 0.65rem 1.2rem;
+  background: rgba(255, 111, 0, 0.08);
+  border: 2px dashed rgba(255, 111, 0, 0.5);
+  border-radius: 8px;
+  color: #ff6f00;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.achFileLabel:hover {
+  background: rgba(255, 111, 0, 0.15);
+  border-color: #ff6f00;
+}
+
+.achPreviewImg {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #ffd9b3;
+}
+
+.achModalSubmitBtn {
+  background: #ff6f00;
+  color: white;
+  border: none;
+  padding: 0.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+  font-family: inherit;
+}
+
+.achModalSubmitBtn:hover { background: #e65c00; }
 
 /* =============================================
    CONTACT FORM SECTION
 ============================================= */
 #contact {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .contactDesc {
-    display: block;
-    padding: 0.5rem 1rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.7);
+  display: block;
+  padding: 0.5rem 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .contactForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 540px;
-    margin: 0 auto;
-    gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  gap: 0.75rem;
 }
 
 .name,
 .email,
 .msg {
-    font-size: 0.95rem;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    color: white;
-    border: 1px solid rgba(255, 111, 0, 0.2);
-    border-radius: 8px;
-    background-color: rgba(255,255,255,0.05);
-    outline: none;
-    transition: border-color 0.2s ease;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  color: white;
+  border: 1px solid rgba(255, 111, 0, 0.2);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  outline: none;
+  transition: border-color 0.2s ease;
 }
 
 .name:focus,
 .email:focus,
 .msg:focus {
-    border-color: #ff6f00;
+  border-color: #ff6f00;
 }
 
 .name::placeholder,
 .email::placeholder,
 .msg::placeholder {
-    color: rgba(255,255,255,0.35);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .msg {
-    resize: vertical;
-    min-height: 120px;
+  resize: vertical;
+  min-height: 120px;
 }
 
 .submit {
-    background: #ff6f00;
-    color: white;
-    padding: 0.75rem 3.5rem;
-    border: none;
-    margin-top: 0.75rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+  background: #ff6f00;
+  color: white;
+  padding: 0.75rem 3.5rem;
+  border: none;
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .submit:hover {
-    background: #e25500;
-    transform: scale(1.05);
+  background: #e25500;
+  transform: scale(1.05);
 }
 
 /* Social icons */
-.links {
-    margin-top: 1.5rem;
-}
+.links { margin-top: 1.5rem; }
 
 .social-icons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 0.5rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
 .social-icons a {
-    color: white;
-    background-color: rgba(255,255,255,0.08);
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #ff6f00;
-    background-color: rgba(255, 111, 0, 0.12);
-    transform: scale(1.2);
+  color: #ff6f00;
+  background-color: rgba(255, 111, 0, 0.12);
+  transform: scale(1.2);
 }
 
 /* =============================================
    RESPONSIVE
 ============================================= */
 @media screen and (max-width: 768px) {
-    #contactPage {
-        padding: 3rem 1.2rem;
-    }
+  #contactPage { padding: 3rem 1.2rem; }
 
-    .ContactPageTitle {
-        font-size: 2.3rem;
-    }
+  .achTitleRow {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-    .contactPageDesc {
-        font-size: 0.95rem;
-    }
+  /* Always visible on mobile */
+  .addAchBtn {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-    .experienceImg {
-        height: 12rem;
-    }
+  .achDeleteBtn { opacity: 1; }
 
-    .contactForm {
-        width: 100%;
-    }
+  .ContactPageTitle { font-size: 2.3rem; }
+  .contactPageDesc  { font-size: 0.95rem; }
+  .experienceImg    { height: 12rem; }
+  .contactForm      { width: 100%; }
 }
 
 @media screen and (max-width: 480px) {
-    .ContactPageTitle {
-        font-size: 1.9rem;
-    }
+  .ContactPageTitle { font-size: 1.9rem; }
 
-    .experienceImg {
-        width: 90vw;
-        height: auto;
-    }
+  .experienceImg {
+    width: 90vw;
+    height: auto;
+  }
 }
